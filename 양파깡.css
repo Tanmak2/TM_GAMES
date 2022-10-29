@@ -1,14 +1,13 @@
 body{
     margin: 0;
     padding: 0;
-    /* background-image: url(../과자/back.png); */
     background-size: 100%;
 }
 
 #top{
     margin: 0 auto;
     padding: 0;
-    width: 1935px;
+    width: 1903px;
     position: relative;
     background: #BD9424;
 }
@@ -18,19 +17,19 @@ body{
 #img_box{
     margin: 0 auto;
     padding: 0;
-    width: 2000px;
+    width: 1903px;
 }
 
 #back_img{
     margin: 0 auto;
     padding: 0;
-    width: 2000px;
+    width: 1903px;
 }
 
 #back_img img{
     margin: 0 auto;
     padding: 0;
-    width: 1950px;
+    width: 1901px;
     vertical-align: middle;
     position:relative
 }
@@ -44,16 +43,46 @@ body{
 #title_box{
     position:absolute;
     left: 50px;
-    width: 50%;
-    top: 500px;
-    left: 500px;
+    width: 1000px;
+    top: 200px;
+    left: 460px;
     display: flex;
-    background: chartreuse;
+    /* background: chartreuse; */
+    height: 120px;
 }
 
-#title_box h1{
-    width: 100%;
+.title-1{
+    margin: 0 auto;
+    padding: 0;
+    width: 200px;
+    height: 120px;
+    /* background: gold; */
     text-align: center;
+    font-size: 50px;
+   margin-left: 170px;
+   padding-top: 30px;
+}
+
+.title-2{
+    margin: 0 auto;
+    padding: 0;
+    width: 200px;
+    height: 120px;
+    /* background: darkgoldenrod; */
+    text-align: center;
+    font-size: 100px;
+}
+
+.title-3{
+    margin: 0 auto;
+    padding: 0;
+    width: 200px;
+    height: 120px;
+    /* background: gold; */
+    text-align: center;
+    font-size: 50px;
+    margin-right: 170px;
+    padding-top: 30px;
 }
 
 
@@ -64,13 +93,13 @@ body{
 #search{
     position:absolute;
     left: 50px;
-    width: 50%;
+    width: 30%;
     height: 55px;
-    top: 800px;
-    left: 500px;
+    top: 400px;
+    left: 460px;
     margin: 0 auto;
     padding: 0;
-    background: violet;
+    /* background: violet; */
     
 }
 
@@ -83,6 +112,42 @@ body{
     border-radius: 25px;
 }
 
+/* 로그인,계정 찾기 */
+
+#login-box{
+    display: flex;
+    position:absolute;
+    width: 130px;
+    top: 400px;
+    left: 1300px;
+    /* background: gold; */
+}
+
+#login{
+    display: flex;
+}
+
+#login input{
+    width: 100px;
+    margin-right: 10px;
+}
+
+#login-id{}
+
+#login-passwrd{}
+
+#login-bt button{
+    width: 60px;
+    height: 100%;
+}
+
+#find-id{
+
+}
+
+#find{
+
+}
 
 /* 추천 레시피 */
 /* 레시피 api에서 랜덤으로 레시피 음식 사진을
@@ -92,59 +157,95 @@ body{
     position:absolute;
     left: 50px;
     width: 75%;
-    height: 450px;
-    top: 1000px;
+    height: 657px;
+    top: 500px;
     left: 234px;
-    background: red;
+    background: rgb(24, 80, 22);
 }
 
-#rm_recipe_title h2{
-    color: white;
+#rm_recipe_title{
+    /* background: rebeccapurple; */
+    margin-bottom: 10px;
+}
+
+.tot-title{
+    color: black;
     margin: 0 auto;
     padding: 0;
     text-align: center;
 }
 
-#rm_recipe_title{
-    background: rebeccapurple;
+.tot-too-box-1{
+    width: 100%;
+    height: 210px;
+    display: flex;
+    /* background: khaki; */
+    justify-content: space-around;
+
 }
 
-#rm_recipe_list_box{
+.tot-too-box-2{
+    width: 100%;
+    height: 210px;
     display: flex;
+    /* background: khaki; */
+    justify-content: space-around;
+    margin-top: 100px;
+
 }
 
 .rm_recipe_list{
     margin: 0 auto;
-    width: 500px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     margin: 5px;
-    background: rgb(79, 189, 75);
+    background:khaki;
 }
 
-/* 재료,레시피,조합 랜덤 */
+#random_list-1{}
+
+#random_list-2{}
+
+#random_list-3{}
+
+/* 랜덤 재료,레시피,조합 */
 
 #random_rip_box{
     position:absolute;
     left: 50px;
     width: 75%;
-    height: 450px;
-    top: 1500px;
+    height: 347px;
+    top: 1200px;
     left: 234px;
     background: rgb(32, 148, 148);
 }
 
-
-/* 비건 */
-
-#vegan_box{
-    position:absolute;
-    left: 50px;
-    width: 75%;
-    height: 450px;
-    top: 2000px;
-    left: 234px;
-    background: rgb(32, 148, 148);
+#random_rip_title{
+    /* background: rebeccapurple; */
+    margin-bottom: 10px;
 }
+
+.tot-one-div{
+    width: 100%;
+    height: 210px;
+    display: flex;
+    /* background: khaki; */
+    justify-content: space-around;
+}
+
+.random_list{
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    margin-top: 5px;
+    background:khaki;
+}
+
+#random_list-1{}
+
+#random_list-2{}
+
+#random_list-3{}
 
 /* 우리들의 레시피 */
 
@@ -152,22 +253,61 @@ body{
     position:absolute;
     left: 50px;
     width: 75%;
-    height: 450px;
-    top: 2500px;
+    height: 657px;
+    top: 1600px;
     left: 234px;
-    background: rgb(32, 148, 148);
+    background: rgb(24, 80, 22);
 }
+
+#our_recipe_title{
+    /* background: rebeccapurple; */
+    margin-bottom: 10px;
+}
+
+.our_recipe_list{
+    margin: 0 auto;
+    width: 300px;
+    height: 200px;
+    margin: 5px;
+    background:khaki;
+}
+
+#our_recipe_list-1{}
+
+#our_recipe_list-2{}
+
+#our_recipe_list-3{}
+
 /* 커뮤니티 */
 
 #community_box{
     position:absolute;
     left: 50px;
     width: 75%;
-    height: 450px;
-    top: 3000px;
+    height: 347px;
+    top: 2350px;
     left: 234px;
     background: rgb(32, 148, 148);
 }
+
+#community_title{
+    /* background: rebeccapurple; */
+    margin-bottom: 10px;
+}
+
+.community_list{
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    margin: 5px;
+    background:khaki;
+}
+
+#community-list-1{}
+
+#community-list-2{}
+
+#community-list-3{}
 
 /* 요리 유튜버 */
 
@@ -175,11 +315,30 @@ body{
     position:absolute;
     left: 50px;
     width: 75%;
-    height: 450px;
-    top: 3500px;
+    height: 347px;
+    top: 2750px;
     left: 234px;
     background: rgb(32, 148, 148);
 }
+
+#cooking_YT_title{
+    margin-bottom: 10px;
+
+}
+
+.cooking_YT_list{
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    margin: 5px;
+    background:khaki;
+}
+
+#cooking-YT-list-1{}
+
+#cooking-YT-list-2{}
+
+#cooking-YT-list-3{}
 
 /* 요리책 광고(알라딘) */
 
