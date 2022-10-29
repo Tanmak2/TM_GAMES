@@ -1,0 +1,268 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-size: 100%;
+}
+
+#top{
+    margin: 0 auto;
+    padding: 0;
+    width: 1903px;
+    position: relative;
+    background: #BD9424;
+}
+
+/*  배경 이미지  */
+
+#img_box{
+    margin: 0 auto;
+    padding: 0;
+    width: 1903px;
+}
+
+#back_img{
+    margin: 0 auto;
+    padding: 0;
+    width: 1903px;
+}
+
+#back_img img{
+    margin: 0 auto;
+    padding: 0;
+    width: 1901px;
+    vertical-align: middle;
+    position:relative
+}
+
+/* 제목 */
+
+/* 전설의 , 자취 , 레시피 따로 나눠야하고
+자취는 큰 크기,붓글씨 글꼴,빨간색으로 줘야한다*/
+
+
+#title_box{
+    position:absolute;
+    left: 50px;
+    width: 1000px;
+    top: 200px;
+    left: 460px;
+    display: flex;
+    /* background: chartreuse; */
+    height: 120px;
+}
+
+.title-1{
+    margin: 0 auto;
+    padding: 0;
+    width: 200px;
+    height: 120px;
+    /* background: gold; */
+    text-align: center;
+    font-size: 50px;
+   margin-left: 170px;
+   padding-top: 30px;
+}
+
+.title-2{
+    margin: 0 auto;
+    padding: 0;
+    width: 200px;
+    height: 120px;
+    /* background: darkgoldenrod; */
+    text-align: center;
+    font-size: 100px;
+}
+
+.title-3{
+    margin: 0 auto;
+    padding: 0;
+    width: 200px;
+    height: 120px;
+    /* background: gold; */
+    text-align: center;
+    font-size: 50px;
+    margin-right: 170px;
+    padding-top: 30px;
+}
+
+/* 음식 사진, 다음 사진, */
+
+#information-box-1{
+    position:absolute;
+    left: 50px;
+    width: 75%;
+    height: 600px;
+    top: 500px;
+    left: 234px;
+    display: flex;
+    background: rgb(24, 80, 22);
+}
+
+.next-img{
+    width: 200px;
+    height: 200px;
+    margin-top: 230px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: magenta;
+}
+
+#food-img-box{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    padding: 0;
+    background: #BD9424;
+}
+
+#food-img{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    padding: 0;
+    background: hotpink;
+}
+
+#name-stars-box{
+    display: flex;
+}
+
+#food-name{
+    width: 250px;
+    height: 100px;
+    background-color: aqua;
+}
+
+#stars-box{
+    width: 250px;
+    height: 100px;
+    background-color: rgb(113, 78, 196);
+}
+
+/* 재료,조리법 */
+
+/* 재료 */
+
+#information-box-2{
+    position:absolute;
+    left: 50px;
+    width: 75%;
+    height: 657px;
+    top: 1100px;
+    left: 234px;
+    display: flex;
+    background: rgb(66, 211, 61);
+}
+
+#material-list-box{
+    width: 50%;
+    height: 100%;
+    background: darkcyan;
+}
+
+#material-title{
+    width: 100px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0;
+    background: hotpink;
+}
+
+#material-tex{
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    padding: 0;
+    background: rgb(53, 177, 36);
+}
+
+/* 조리법 */
+
+#recipe-list-box{
+    width: 50%;
+    height: 100%;
+    background: rgb(200, 202, 70);
+}
+
+#recipe-title{
+    width: 100px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0;
+    background: hotpink;
+}
+
+#recipe-tex{
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    padding: 0;
+    background: rgb(53, 177, 36);
+}
+
+/* 유튜브 */
+
+#information-box-3{
+    position:absolute;
+    left: 50px;
+    width: 75%;
+    height: 657px;
+    top: 1800px;
+    left: 234px;
+    display: flex;
+    background: rgb(179, 48, 168);
+}
+
+#youtu{
+    width: 50%;
+    height: 100%;
+    background: rgb(200, 202, 70);
+}
+
+#youtu-video{
+    width: 100%;
+    height: 80%;
+    background: chocolate;
+}
+
+/* 별점 */
+
+#stars-point{
+ 
+}
+
+/* 리뷰 */
+
+#review{
+    width: 50%;
+    height: 100%;
+    background: rgb(29, 151, 141);
+}
+
+#review-title{
+    width: 100%;
+    height: 80%;
+    background: rgb(44, 45, 128);
+}
+
+#review{
+    width: 50%;
+    height: 100%;
+    background: rgb(29, 151, 141);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
