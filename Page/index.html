@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Yun</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="login.html">로그인</a>
+    <div id="result"></div>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+    import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    var userInfo;
+    var name;
+    var loginUserKey;
+  
+    // Your web app's Firebase configuration
+    //여기
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const database = getDatabase(app);
+
+    userSessionCheck();
+
+    function userSessionCheck(){
+        auth.onAuthStateChanged(function(userInfo){
+            if(userInfo){
+                const dbRef = ref(database);
+                get(child(dbRef, 'users/'+userInfo.uid)).then(function(snapshot){
+                    if(snapshot.exists()){
+                        $('#result').text("반가워요 !" + snapshot.val().name + "님!")
+                        name = snapshot.val().name;
+                        loginUserKey = snapshot.key;
+                        return true;
+                    }
+                    else{
+                        $('#result').text("No Data!");        
+                    }
+                })
+            }
+            else{
+                $('#result').text("로그인을 해주세요!");
+                return false;
+            }
+        })
+    }
+  </script>
+</html>
