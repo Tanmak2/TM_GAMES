@@ -6,9 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Double Yun</title>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div class="main-wrap">
+        <div class="top-wrap">
+            <div class="logo">
+                Double Yun's<br>종합게임창고
+            </div>
+            <div class="logo-img">
+                로고 이미지
+            </div>
+            <div class="user-info-wrap">
+                <div class="gamestart">
+
+                </div>
+                <div class="join-bt-wrap">
+                    <button class="login">로그인</button>
+                    <button class="join">회원가입</button>
+                </div>
+            </div>
+        </div>
+        <div class="contents-wrap">
+            <div class="side-wrap">
+            
+            </div>
+            <div class="content">
+                <div class="box box1x1"></div>
+                <div class="box box1x1"></div>
+                <div class="box box2x2"></div>
+                <div class="box box1x1"></div>
+                <div class="box box1x1"></div>
+                <div class="box box2x1"></div>
+                <div class="box box1x1"></div>
+                <div class="box box1x1"></div>
+                <div class="box box2x2"></div>
+                <div class="box box3x2"></div>
+            </div>
+        </div>
+    </div>
     <a href="login.html">로그인</a>
+    <button class="logout">로그아웃</button>
     <div id="result"></div>
 </body>
 <script type="module">
@@ -24,7 +63,15 @@
     var loginUserKey;
   
     // Your web app's Firebase configuration
-    //여기
+    const firebaseConfig = {
+    apiKey: "AIzaSyDRbfbfagCEy7u5KR7UK0KJiuyNDskeN58",
+    authDomain: "doubleyun-54389.firebaseapp.com",
+    databaseURL: "https://doubleyun-54389-default-rtdb.firebaseio.com",
+    projectId: "doubleyun-54389",
+    storageBucket: "doubleyun-54389.appspot.com",
+    messagingSenderId: "976437050574",
+    appId: "1:976437050574:web:142e58ef48ae8a858a649f"
+  };
   
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -39,21 +86,30 @@
                 const dbRef = ref(database);
                 get(child(dbRef, 'users/'+userInfo.uid)).then(function(snapshot){
                     if(snapshot.exists()){
-                        $('#result').text("반가워요 !" + snapshot.val().name + "님!")
+                        $('#result').text("반가워요! " + snapshot.val().name + "님!")
                         name = snapshot.val().name;
                         loginUserKey = snapshot.key;
                         return true;
                     }
                     else{
-                        $('#result').text("No Data!");        
+                        $('#result').text("No Data!");
                     }
                 })
             }
             else{
-                $('#result').text("로그인을 해주세요!");
                 return false;
             }
         })
     }
+    $(document).on('click','.logout',function(){
+        auth.signOut().then(function(){
+            alert("로그아웃 되었습니다.");
+            window.location.href = 'index.html';
+        }), function(error){
+            if(error){
+                alert(error.message);
+            }
+        }
+    })
   </script>
 </html>
