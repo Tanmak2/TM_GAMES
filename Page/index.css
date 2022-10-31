@@ -1,0 +1,87 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+.main-wrap{
+    width: 100%;
+    height: 1200px;
+}
+.top-wrap{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    background-color: aqua;
+}
+.logo{
+    width: 15%;
+    height: auto;
+    background-color: aquamarine;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 15px;
+}
+.logo-img{
+    width: 70%;
+    height: auto;
+    background-color: bisque;
+    line-height: 110px;
+    text-align: center;
+}
+.user-info-wrap{
+    width: 15%;
+    height: auto;
+    background-color: burlywood;
+}
+.gamestart{
+    width: 100%;
+    height: 80%;
+    background-color: cadetblue;
+}
+.join-bt-wrap{
+    width: 100%;
+    height: auto;
+    background-color: chocolate;
+    display: flex;
+    justify-content: space-between;
+}
+.contents-wrap{
+    width: 100%;
+    height: 80%;
+    display: flex;
+}
+.side-wrap{
+    width: 15%;
+    height: auto;
+    background-color: coral;
+}
+.content{
+    width: 80%;
+    height: auto;
+    background-color: cornflowerblue;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+.box{
+    border-radius: 10px;
+    background-color: darkgray;
+}
+.box1x1{
+    width: 100px;
+    height: 100px;
+}
+.box2x2{
+    width: 200px;
+    height: 200px;
+}
+.box2x1{
+    width: 200px;
+    height: 100px;
+}
+.box3x2{
+    width: 300px;
+    height: 200px;
+}
