@@ -133,35 +133,40 @@
         out_button.setAttribute( 'onclick' ,"out_battle()" );
         document.querySelector(".btn-submit").setAttribute("disabled", "true");
         }
+    }
 
+    
 
-        // var log = document.getElementById('log');
-        // // log.innerHTML = "";
-        // logMessage("동굴 안에서 수상한 냄새가 나고 있습니다");
-        // logMessage("들어가시겠습니까?");
-        // // 들어간다
-        // out_button = document.createElement( 'button' );
-        // var out_text_button = document.createTextNode( '들어간다' );
-        // out_button.appendChild( out_text_button );
-        // document.body.appendChild( out_button );
-        // out_button.setAttribute( 'onclick' ,"out_battle()" );
-        // document.querySelector(".btn-submit").setAttribute("disabled", "true");
-        
-        
+    // 아이템 생성하기
+    function Item(name, att){
+        this.name = name;
+        this.att = att;
+    }
 
+    // 아이템 이름,  공격력
+    function Drop_items(){
 
+        var items = [
+            ["rusty sword", 10],
+            ["long sword", 20],
+            ["Morning Star", 30],
+            ["Rifle", 400],
+        ];
+        var item = items[Math.floor(Math.random()*4)];
+        return new Item(item[0], item[1], item[3], item[4])
     }
 
     // 객체가 생성된것
-    var hero = new Character(prompt('이름을 입력'), 100, 10, 1, 0);
+    var hero = new Character(prompt('이름을 입력'), 100, 10, 1, 0,[]);
 
     // 캐릭터 생성 이름, 체력, 공격력
-    function Character(name, hp, att, lev, xp){
+    function Character(name, hp, att, lev, xp, it){
         this.name = name;
         this.hp = hp;
         this.att = att;
         this.lev = lev;
         this.xp = xp;
+        this.it = it;
     }
 
     //몬스터 생성하기
@@ -310,7 +315,10 @@
 
     function Mysterious_cave_right_road_bt(){
         Character()
+        var item = Drop_items();
         var trap = trap_Sponsor();
+
+        
         
 
         var choice_rm = Math.floor(Math.random()*2);
@@ -323,15 +331,26 @@
         }
         else if(choice_rm > 0){
             var boss_monster = boss_monster_Sponsor();
-        
+
             logMessage("동굴 깊숙히 들어갑니다");
             logMessage("횟불 하나에 의지한체 깊고 깊은 동굴을 들어갑니다");
             logMessage("그러자 주변이 달라짐이 느껴집니다!");
             logMessage(boss_monster.name+"를 조우!!");
-            logMessage(boss_monster.name+"은(를) 강한 상대 입니다");
+
+            if(boss_monster.name = "King_Goblin"){
+                logMessage(boss_monster.name+" 은 "+hero.name+"를(을) 향해"+"죽일 기세로 쳐다보고 있습니다");
+            }
+            if(boss_monster.name = "King_Trol"){
+                logMessage(boss_monster.name+" 은 "+hero.name+"를(을) 향해"+"거대한 몽둥이를 높이 쳐들고 있습니다");
+            }
+            if(boss_monster.name = "King_Orc"){
+                logMessage(boss_monster.name+" 은 "+hero.name+"를(을) 향해"+"붉은 안광을 내뿜고있습니다");
+            }
+
             logMessage(hero.name+"과"+boss_monster.name+"이 전투 합니다");
 
             while(true){
+                var item = Drop_items();
                 boss_monster.hp -= hero.att;
                 if(boss_monster.hp <= 0){
                     logMessage(hero.name+"이(가)"+boss_monster.name+"과 의 전투에서 승리 했습니다 축하드립니다");
@@ -347,7 +366,14 @@
                     Go_back.appendChild( Go_back_text );
                     document.body.appendChild( Go_back );
                     Go_back.setAttribute( 'onclick' ,"Go_back_bt()" );
-                    logMessage(re_point);
+                    logMessage("리포인트"+re_point+"를(을) 얻었습니다");
+                    logMessage("아이템 : "+ item.name+"을 얻었습니다 공격력이"+item.att+"상승 합니다");
+
+                    // hero.it = item.name;
+                    hero.att += item.att;
+                    
+                    // logMessage(hero.name+"가 소유한 아이템은"+hero.it[0]+"입니다");
+                    
                     break;
                 }
                 logMessage(boss_monster.name+"의 체력이 "+boss_monster.hp+"가 되었습니다.");
@@ -373,55 +399,93 @@
             }
         }
     }
-// // -------------------------------------------------------------------------------
 
-//     function bt2(){
-//         logMessage("앞에서 나를 끌어당기는 듯한 느낌이 납니다");
-//         logMessage("홀린듯이 전진합니다");
 
+/* ---------------보스 전투------------ */
+
+/*------------------목표---------------*/
+/*
+    1. 보스 처치 보상으로 아이템 생성 및 그로인한 스탯 상승 : 반 정도 성공
+    2. 상승한 스탯 저장 하기 : 객체를 배열로 저장하면 될것같다
+    3. 몬스터 2마리 동시 조우 및
+        히어로 1턴 몬스터1 2턴 몬스터2 3턴 으로 진행하기
+    4. 몬스터별 출력 log 생성 : 반쯤 성공
+    5. 
+*/
+
+/*
+function Mysterious_cave_right_road_bt(){
+        Character()
+        var item = Drop_items();
+        var trap = trap_Sponsor();
+        var monster = monster_Sponsor();
+        
         
 
-//     }
-//     function Mysterious_cave_left_road_bt(){
-//         var monster = monster_Sponsor();
+        var choice_rm = Math.floor(Math.random()*2);
 
-//         logMessage("동굴 안쪽에는 최근에도 무엇인가 살았던 흔적이 곳곳에 남아있습니다");
-//         logMessage(monster.name+"를 조우");
-//         logMessage(hero.name+"과"+monster.name+"이 전투 합니다");
+        if(choice_rm == 0){
+            hero.hp = hero.hp- trap.att
+            logMessage(hero.name+"이(가)"+trap.name+"에 당했습니다"+hero.name+"의 남은 체력은"+hero.hp+"입니다");
 
-//         // 몬스터 체력은 몬스터 체력만큼이다, 몬스터 체력이 0보다 작거나 같아지면 xp++
-//         while(true){
-//             monster.hp -= hero.att;
-//             if(monster.hp <= 0){
-//                 logMessage(hero.name+"이(가)"+monster.name+"과 의 전투에서 승리 했습니다");
-//                 logMessage("남은 체력은"+hero.hp);
-
-//                 // 둘러보기
-//                 bt_button = document.createElement( 'button' );
-//                 var bt_button_text = document.createTextNode( '전투2' );
-//                 bt_button_button.appendChild( bt_button_text );
-//                 document.body.appendChild( bt_button );
-//                 bt_button.setAttribute( 'onclick' ,"bt2()" );
-                
-//                 // 나가기 지우기
-//                 out_button.remove();
-//                 home_button.remove();
-//                 break;
-//             }
-//             logMessage(monster.name+"의 체력이 "+monster.hp+"가 되었습니다.");
-//             hero.hp -= monster.att;
-//             if(hero.hp <= 0){
-//                 logMessage(hero.name+"이(가)"+monster.name+"과 의 전투에서 패배 했습니다");
-                
-//                 // 처음으로
-//                 Go_back = document.createElement( 'button' );
-//                 var Go_back_text = document.createTextNode( '처음으로' );
-//                 Go_back.appendChild( Go_back_text );
-//                 document.body.appendChild( Go_back );
-//                 Go_back.setAttribute( 'onclick' ,"Go_back_bt()" );
-//                 break;
-//             }   
-//         }
+            Mysterious_cave_right_road.remove();
+        }
+        else if(choice_rm > 0){
+            var monster = monster_Sponsor();
         
-//     }
+            logMessage("동굴 깊숙히 들어갑니다");
+            logMessage("횟불 하나에 의지한체 깊고 깊은 동굴을 들어갑니다");
+            logMessage("그러자 주변이 달라짐이 느껴집니다!");
+            logMessage(monster.name+"를 조우!!");
+            logMessage(monster.name+"은(를) 강한 상대 입니다");
+            logMessage(hero.name+"과"+monster.name+"이 전투 합니다");
+
+            while(true){
+                monster.hp -= hero.att;
+                if(monster.hp <= 0){
+                    logMessage(hero.name+"이(가)"+monster.name+"과 의 전투에서 승리 했습니다 축하드립니다");
+                    logMessage("남은 체력은"+hero.hp);
+                    Mysterious_cave_right_road.remove();
+                    Mysterious_cave_left_road.remove();
+
+                    re_point += 1;
+
+                    // 처음으로
+                    next_dungeon = document.createElement( 'button' );
+                    var next_dungeon_text = document.createTextNode( '처음으로' );
+                    next_dungeon.appendChild( next_dungeon_text );
+                    document.body.appendChild( next_dungeon );
+                    next_dungeon.setAttribute( 'onclick' ,"next_dungeon_bt()" );
+                    break;
+                }
+                logMessage(monster.name+"의 체력이 "+monster.hp+"가 되었습니다.");
+                hero.hp -= monster.att;
+                
+
+
+                if(hero.hp <= 0){
+                    logMessage(hero.name+"이(가)"+monster.name+"과 의 전투에서 패배 했습니다");
+
+                    Mysterious_cave_right_road.remove();
+                    Mysterious_cave_left_road.remove();
+
+                    // 처음으로
+                    Go_back = document.createElement( 'button' );
+                    var Go_back_text = document.createTextNode( '처음으로' );
+                    Go_back.appendChild( Go_back_text );
+                    document.body.appendChild( Go_back );
+                    Go_back.setAttribute( 'onclick' ,"Go_back_bt()" );
+                    break;
+                }
+                logMessage(hero.name+"의 체력이 "+hero.hp+"가 되었습니다.");
+            }
+        }
+    }
+
+*/
+
+    function next_dungeon(){
+
+        item.name
+    }
 </script>
