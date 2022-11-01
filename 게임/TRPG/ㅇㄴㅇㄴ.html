@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임</title>
+</head>
+
+<body>
+    <button onclick="start()">시작합니다</button>
+
+    <div id="game">
+        <div id="log"></div>
+        <button id="out" onclick="bt('door')">나간다</button>
+        <button id="leave" onclick="bt('home')">남는다</button>
+        <!-- 선택지 버튼 -->
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    function logMessage(msg, color) {
+        if (!color) { color = 'black'; } // 전투 실행 로그 색
+
+        var div = document.createElement('div'); // 변수 div에 div를 생성하는 함수 대입
+        div.innerHTML = msg; // 그 div에 msg 값 대입
+        div.style.color = color; // 그 div 스타일 설정
+        document.getElementById('log').appendChild(div); // log에 div변수 값 대입
+    }
+
+    function start() {
+        var log = document.getElementById('log');
+        log.innerHTML = "";
+        var HeroName = (prompt('이름을 입력하세요'));
+        logMessage(HeroName + " 의 집 밖에 수상한 소리가 나고 있습니다...");
+        logMessage("나가시려면 나간다");
+        logMessage("남으시려면 남는다");
+    }
+
+    function oututbattle() {
+        logMessage("밖으로 나가니 몬스터와 조우 했습니다. " + "<bt>" + " 전투를 시작합니다");
+        var he = 2;
+        var go = 1;
+
+        if (he > go) {
+            logMessage("이겼습니다");
+            logMessage("다음 행동을 선택해 주십시요");
+        }
+
+    }
+
+
+    var swit = false;
+    function HomeBattle() {
+        logMessage("집 밖으로 몬스터가 침입 했습니다. " + "<bt>" + " 전투를 시작합니다");
+        var he = 2;
+        var go = 1;
+
+        if (he > go) {
+            logMessage("이겼습니다");
+            logMessage("다음 행동을 선택해 주십시요");
+        }
+
+
+
+        if (!swit) {
+            var options = document.createElement('button');
+
+            var options_text = document.createTextNode('문 밖으로 나간다');
+
+            options.setAttribute('onclick', "bt('door')");
+
+            options.appendChild(options_text);
+
+            document.body.appendChild(options);
+
+            swit = true;
+        }
+
+    }
+
+    var swit = false;
+    
+    function bt(x) {
+
+        switch (x) {
+            case "door":
+                alert('문 밖으로 나갔습니다');
+                outbattle();
+                break;
+
+            case "home":
+                alert('집 안에 남았습니다');
+                HomeBattle()
+                break;
+            case 'battle':
+                alert("대결중입니다");
+                break;
+
+            case "defense": // 방어
+                alert('문 밖으로 나갔습니다');
+                outbattle();
+                break;
+                
+            case "pick_up": // 줍기
+                alert('문 밖으로 나갔습니다');
+                outbattle();
+                break;
+
+            case "leaving": // 떠난다
+                alert('문 밖으로 나갔습니다');
+                outbattle();
+                break;
+
+            case "talk": // 대화 한다
+                alert('문 밖으로 나갔습니다');
+                outbattle();
+                break;
+
+            case "find": // 찾기
+                alert('문 밖으로 나갔습니다');
+                outbattle();
+                break;
+        }
+    }
+
+
+
+</script>
