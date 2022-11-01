@@ -1,70 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Double Yun</title>
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="init.css" />
+  </head>
+  <body>
     <div class="main-wrap">
-        <div class="top-wrap">
-            <div class="logo">
-                Double Yun's<br>종합게임창고
-            </div>
-            <div class="logo-img">
-                로고 이미지
-            </div>
-            <div class="user-info-wrap">
-                <div class="gamestart">
-
-                </div>
-                <div class="join-bt-wrap">
-                    <button class="login">로그인</button>
-                    <button class="join">회원가입</button>
-                </div>
-            </div>
+      <div class="top-wrap">
+        <div class="logo">Double Yun's<br />종합게임창고</div>
+        <div class="logo-img">로고 이미지</div>
+      </div>
+      <div class="contents-wrap">
+        <div class="side-wrap"></div>
+        <div class="content">
+          <div id="game1" class="box box1x1">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
+          <div class="box box1x1">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
+          <div class="box box2x2">
+            <a href="login.html"><img src="pushing.png" alt="" /></a>
+            <div class="game-title">Pushing Capsule Hero</div>
+          </div>
+          <div class="box box1x1">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
+          <div class="box box1x1">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
+          <div class="box box2x1">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
+          <div class="box box1x1">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
+          <div class="box box1x1">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
+          <div class="box box2x2">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
+          <div class="box box4x2">
+            <img src="picture1.jpg" alt="" />
+            <div class="game-title">게임이름</div>
+          </div>
         </div>
-        <div class="contents-wrap">
-            <div class="side-wrap">
-            
-            </div>
-            <div class="content">
-                <div class="box box1x1"></div>
-                <div class="box box1x1"></div>
-                <div class="box box2x2"></div>
-                <div class="box box1x1"></div>
-                <div class="box box1x1"></div>
-                <div class="box box2x1"></div>
-                <div class="box box1x1"></div>
-                <div class="box box1x1"></div>
-                <div class="box box2x2"></div>
-                <div class="box box3x2"></div>
-            </div>
+        <div class="user-info-wrap">
+          <div class="gamestart"></div>
+          <div class="join-bt-wrap">
+            <button class="login">로그인</button>
+            <button class="join">회원가입</button>
+          </div>
         </div>
+      </div>
+      <div class="footer-wrap"></div>
     </div>
-    <a href="login.html">로그인</a>
+    <!-- <a href="login.html">로그인</a>
     <button class="logout">로그아웃</button>
-    <div id="result"></div>
-</body>
-<script type="module">
+    <div id="result"></div> -->
+  </body>
+  <script type="module">
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
-    import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js';
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+    } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js';
+    import {
+      getDatabase,
+      ref,
+      set,
+      get,
+      child,
+    } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js';
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
     var userInfo;
     var name;
     var loginUserKey;
-  
+
     // Your web app's Firebase configuration
     // here
-  
+
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
@@ -72,36 +114,35 @@
 
     userSessionCheck();
 
-    function userSessionCheck(){
-        auth.onAuthStateChanged(function(userInfo){
-            if(userInfo){
-                const dbRef = ref(database);
-                get(child(dbRef, 'users/'+userInfo.uid)).then(function(snapshot){
-                    if(snapshot.exists()){
-                        $('#result').text("반가워요! " + snapshot.val().name + "님!")
-                        name = snapshot.val().name;
-                        loginUserKey = snapshot.key;
-                        return true;
-                    }
-                    else{
-                        $('#result').text("No Data!");
-                    }
-                })
+    function userSessionCheck() {
+      auth.onAuthStateChanged(function (userInfo) {
+        if (userInfo) {
+          const dbRef = ref(database);
+          get(child(dbRef, 'users/' + userInfo.uid)).then(function (snapshot) {
+            if (snapshot.exists()) {
+              $('#result').text('반가워요! ' + snapshot.val().name + '님!');
+              name = snapshot.val().name;
+              loginUserKey = snapshot.key;
+              return true;
+            } else {
+              $('#result').text('No Data!');
             }
-            else{
-                return false;
-            }
-        })
-    }
-    $(document).on('click','.logout',function(){
-        auth.signOut().then(function(){
-            alert("로그아웃 되었습니다.");
-            window.location.href = 'index.html';
-        }), function(error){
-            if(error){
-                alert(error.message);
-            }
+          });
+        } else {
+          return false;
         }
-    })
+      });
+    }
+    $(document).on('click', '.logout', function () {
+      auth.signOut().then(function () {
+        alert('로그아웃 되었습니다.');
+        window.location.href = 'index.html';
+      }),
+        function (error) {
+          if (error) {
+            alert(error.message);
+          }
+        };
+    });
   </script>
 </html>
