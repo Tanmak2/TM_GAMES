@@ -115,12 +115,11 @@ function lineDraw() {
     }
   }
 }
-var block = new Block().drawNieun();
+var block = new Block();
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   lineDraw();
-  block;
-  console.log(block.y);
+
   if (timeControl % 5 == 0) {
     if (leftPressd && block.x > 0) {
       block.x -= 50;
