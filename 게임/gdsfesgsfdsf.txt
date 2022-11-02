@@ -1,0 +1,18 @@
+<!-- 
+https://www.zerocho.com/category/JavaScript/post/573d876380f0b9102dc370b8
+
+https://velog.io/@peterpppp/JS-%EA%B8%B0%EC%B4%88-%ED%85%8D%EC%8A%A4%ED%8A%B8RPG%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0
+
+https://byseop.netlify.app/auto-rpg-game/
+
+https://jie0025.tistory.com/5
+
+https://www.nextree.co.kr/p7323/
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+
+https://www.codingfactory.net/10419
+
+
+
+ -->

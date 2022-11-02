@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임</title>
+</head>
+
+<body>
+    <button onclick="start()">시작합니다</button>
+    <div id="game">
+        <div id="log"></div>
+    </div>
+</body>
+
+</html>
+<script>
+    var gameover = false;   
+    var battle = false;
+    var xp = 0;
+    var out_button = "";
+    var home_button = "";
+   
+
+    function logMessage(msg, color) {
+        if (!color) { color = 'black'; } // 전투 실행 로그 색
+
+        var div = document.createElement('div'); // 변수 div에 div를 생성하는 함수 대입
+        div.innerHTML = msg; // 그 div에 msg 값 대입
+        div.style.color = color; // 그 div 스타일 설정
+        document.getElementById('log').appendChild(div); // log에 div변수 값 대입
+    }
+
+    function start() {
+        var log = document.getElementById('log');
+        log.innerHTML = "";
+        logMessage(hero.name + " 의 집 밖에 수상한 소리가 나고 있습니다...");
+        logMessage("나가시려면 나간다");
+        logMessage("남으시려면 남는다");
+
+        // 나간다 버튼
+        out_button = document.createElement( 'button' );
+        // var out_button = document.createElement( 'button' );
+        var out_text_button = document.createTextNode( '나간다' );
+        out_button.appendChild( out_text_button );
+        document.body.appendChild( out_button );
+        out_button.setAttribute( 'onclick' ,"out_battle()" );
+
+        // 남는다 버튼
+        home_button = document.createElement( 'button' );
+        // var home_button = document.createElement( 'button' );
+        var home_text_button = document.createTextNode( '남는다' );
+        home_button.appendChild( home_text_button );
+        document.body.appendChild( home_button );
+        home_button.setAttribute( 'onclick' ,"die()" );
+    }
+
+    // 객체가 생성된것
+    var hero = new Character(prompt('이름을 입력'), 100, 10, 1, 0);
+
+    // 캐릭터 생성 이름, 체력, 공격력
+    function Character(name, hp, att, lev, xp){
+        this.name = name;
+        this.hp = hp;
+        this.att = att;
+        this.lev = lev;
+        this.xp = xp;
+    }
+
+    //몬스터 생성하기
+    function Monster(name, hp, att, lev, xp){
+        this.name = name;
+        this.hp = hp;
+        this.att = att;
+        this.lev = lev;
+        this.xp = xp;
+    }
+
+    // 몬스터 생성 이름, 체력, 공격력
+    function monster_Sponsor(){
+
+        var monsters = [
+            ["go", 10, 5, 1, 5],
+            ["trol", 50, 1, 3, 20],
+            ["orc", 200, 10, 7, 100],
+            ["human", 5, 5, 5, 5]
+        ];
+        var monster = monsters[Math.floor(Math.random()*4)];
+        return new Monster(monster[0], monster[1], monster[3], monster[4])
+    }
+
+    function die(){
+        hero.hp = 0
+       if( hero.hp <= 0){
+        logMessage("집에 남아 있다가 죽었습니다");
+       }
+    }
+
+    function out_battle(){
+        var monster = monster_Sponsor();
+
+        logMessage(" 밖으로 나가보니 마을 곳곳이 불타고 폐허가 되어있었습니다");
+        logMessage(monster.name+"를 조우");
+        logMessage(hero.name+"과"+monster.name+"이 전투 합니다");
+
+        // 몬스터 체력은 몬스터 체력만큼이다, 몬스터 체력이 0보다 작거나 같아지면 xp++
+            while(true){
+                monster.hp -= hero.att;
+                if(monster.hp <= 0){
+                    logMessage(hero.name+"이(가)"+monster.name+"과 의 전투에서 승리 했습니다");
+                    break;
+                }
+                logMessage(monster.name+"의 체력이 "+monster.hp+"가 되었습니다.");
+                hero.hp -= monster.att;
+                if(hero.hp <= 0){
+                    logMessage(hero.name+"이(가)"+monster.name+"과 의 전투에서 패배 했습니다");
+                    break;
+                }
+                
+            }
+            logMessage("마을을 둘러보니 집 곳곳이 불타고 무너져 있습니다");
+            logMessage("주인공에 손에는 방금 죽인 몬스터의 피보다 많은 피가 뭍어있습니다");
+            logMessage("의문이 들었지만 일단은 마을 사람들을 찾아 다닙니다");
+
+            // 둘러보기
+            var find_button = document.createElement( 'button' );
+            var find_text_button = document.createTextNode( '둘러보기' );
+            find_button.appendChild( find_text_button );
+            document.body.appendChild( find_button );
+            find_button.setAttribute( 'onclick' ,"Find()" );
+
+            // 나가기 지우기
+            out_button.remove();
+            home_button.remove();
+        }
+</script>
+
+<!-- out_button.append(document.createTextNode('h'))
+    버튼 속 text 추가 -->
+
