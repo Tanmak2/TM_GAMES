@@ -19,6 +19,7 @@
   </head>
   <body>
     <div class="main-wrap">
+      <div id="mouse"><img src="dy.png" /></div>
       <div class="top-wrap">
         <div class="logo">Double Yun's<br />종합게임창고</div>
         <div class="logo-img">로고 이미지</div>
@@ -144,5 +145,14 @@
           }
         };
     });
+  </script>
+  <script>
+    var mouse = document.getElementById('mouse');
+    document.addEventListener('mousemove', mouseMoveHandler, false);
+
+    function mouseMoveHandler(e) {
+      mouse.style.left = e.pageX + 10 + 'px';
+      mouse.style.top = e.pageY + 15 + 'px';
+    }
   </script>
 </html>
