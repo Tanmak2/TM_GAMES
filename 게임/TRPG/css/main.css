@@ -18,7 +18,7 @@ body{
     height: 25px;
     margin: 0 auto;
     padding: 0;
-    background: rgb(85, 157, 183);
+    /* background: rgb(85, 157, 183); */
 
 }
 
@@ -31,7 +31,7 @@ body{
     height: 25px;
     margin: 0 auto;
     padding: 0;
-    background: violet;
+    /* background: violet; */
     display: flex;
     justify-content: space-between;
 }
@@ -41,7 +41,21 @@ body{
     height: 800px;
     /* 높이를 auto 로 주면 log가 쌓일때 맞춰서 늘어난다 */
     margin: 0 auto;
-    margin-top: 30px;
-    background: chocolate;
+    margin-top: 10px;
+    background: black;
 
+}
+
+#cor{
+    width: 900px;
+    height: auto;
+    /* 높이를 auto 로 주면 log가 쌓일때 맞춰서 늘어난다 */
+    margin: 0 auto;
+    margin-top: 10px;
+    background: black;
+}
+#log{
+    overflow-y: scroll;
+    width: 900px;
+    height: 740px;
 }

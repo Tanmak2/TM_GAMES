@@ -1,0 +1,103 @@
+
+
+
+/* 기본 세팅 */
+
+body{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    background: rgb(121, 166, 100);
+}
+
+#game{
+    width: 1000px;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0;
+    background: bisque;
+}
+
+#icon{
+    width: 250px;
+    height: 25px;
+    margin: 0 auto;
+    padding: 0;
+    /* background: rgb(85, 157, 183); */
+
+}
+
+#icon p{
+    text-align: center;
+}
+
+#menu_list{
+    width: 250px;
+    height: 25px;
+    margin: 0 auto;
+    padding: 0;
+    /* background: violet; */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 스탯 */
+
+.details_screen{
+    width: 900px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background: hotpink;
+}
+
+#img{
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background: gold;
+}
+
+#details_list{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content:space-evenly;
+    background: rebeccapurple;
+}
+
+.details_box{
+    width: 150px;
+    height: 20px;
+    background: firebrick;
+}
+
+.details{
+    width: 150px;
+    height: 70px;
+    background: chocolate;
+}
+
+/* 아이템 */
+
+#item_list{
+    width: 900px;
+    height: 400px;
+    margin-top: 10px;
+    display: flex;
+    justify-content:space-evenly;
+    background: goldenrod;
+}
+
+.item_box{
+    width: 300px;
+    height: 20px;
+    background: red;
+}
+
+.it{
+    width: 300px;
+    height: 375px;
+    background-color: cadetblue;
+}
