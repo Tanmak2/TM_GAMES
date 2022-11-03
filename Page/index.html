@@ -27,7 +27,7 @@
       <div class="contents-wrap">
         <div class="side-wrap"></div>
         <div class="content">
-          <div id="game1" class="box box1x1">
+          <div class="box box1x1">
             <img src="picture1.jpg" alt="" />
             <div class="game-title">게임이름</div>
           </div>
@@ -36,7 +36,7 @@
             <div class="game-title">게임이름</div>
           </div>
           <div class="box box2x2">
-            <a href="login.html"><img src="pushing.png" alt="" /></a>
+            <img src="pushing.png" alt="" />
             <div class="game-title">Pushing Capsule Hero</div>
           </div>
           <div class="box box1x1">
@@ -48,8 +48,8 @@
             <div class="game-title">게임이름</div>
           </div>
           <div class="box box2x1">
-            <img src="picture1.jpg" alt="" />
-            <div class="game-title">게임이름</div>
+            <img src="break.png" alt="" />
+            <div class="game-title">벽돌깨기</div>
           </div>
           <div class="box box1x1">
             <img src="picture1.jpg" alt="" />
@@ -148,11 +148,32 @@
   </script>
   <script>
     var mouse = document.getElementById('mouse');
-    document.addEventListener('mousemove', mouseMoveHandler, false);
+    var box = document.getElementsByClassName('box');
+    for (var i = 0; i < box.length; i++) {
+      box[i].addEventListener('mouseover', mouseOverHandler);
+      box[i].addEventListener('mouseout', mouseOutHandler);
+      box[i].addEventListener('click', moveGame);
+    }
+    document.addEventListener('mousemove', mouseMoveHandler);
+
+    function mouseOverHandler(e) {
+      var imgName = this.children[0].src.split('/')[5].split('.')[0];
+      this.children[0].src = imgName + '.gif';
+    }
+
+    function mouseOutHandler(e) {
+      var imgName = this.children[0].src.split('/')[5].split('.')[0];
+      this.children[0].src = imgName + '.png';
+    }
 
     function mouseMoveHandler(e) {
       mouse.style.left = e.pageX + 10 + 'px';
       mouse.style.top = e.pageY + 15 + 'px';
+    }
+
+    function moveGame(e) {
+      var imgName = this.children[0].src.split('/')[5].split('.')[0];
+      window.location.href = imgName + '.html';
     }
   </script>
 </html>
