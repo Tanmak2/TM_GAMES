@@ -16,23 +16,17 @@ var Check_percent = false;
 var upgrade_stage = document.getElementById('upgrade_stage');
 var upgrade_money = document.getElementById('upgrade_money');
 var upgrade_result = document.getElementById('upgrade_result');
-var upgrade_seccess = 980;
+var upgrade_percents = document.getElementById('upgrade_percent');
+var upgrade_seccesses = [950, 900, 850, 800, 750, 700, 650, 600, 550, 500];
 var upgrade_rate = 0;
-var upgrade_cost = 0;
+var upgrade_cost = 10;
 document.getElementById('upgrade_bt').addEventListener('click', upgrade_bt);
-document.addEventListener('keydown', keyDownHandler);
 document.getElementById('upgrade').addEventListener('click', showUpgrade);
 document.getElementById('shop').addEventListener('click', showShop);
 document.getElementById('lotto').addEventListener('click', showLotto);
 document.getElementById('percent').addEventListener('click', showPercent);
 document.getElementById('get_money').addEventListener('click', click_money);
 
-function keyDownHandler(e) {
-  if (e.keyCode == 13) {
-    alert('오직 마우스로만 클릭하세요');
-    return;
-  }
-}
 function click_money() {
   total_money += money;
   money_div.innerHTML = '현재 골드 : ' + total_money;
@@ -127,19 +121,40 @@ function showPercent() {
 }
 
 function upgrade_bt() {
+  if (upgrade_rate == 99) {
+    alert('마지막 강화입니다.');
+    return;
+  }
+  if (total_money < upgrade_cost) {
+    alert('골드가 부족합니다.');
+    return;
+  }
   var upgrade_percent = Math.floor(Math.random() * 1000) + 1;
-  if (upgrade_seccess >= upgrade_percent) {
+  var upgrade_seccess = upgrade_seccesses[parseInt(upgrade_rate / 10)];
+  if (upgrade_percent <= upgrade_seccess) {
+    total_money -= upgrade_cost;
     upgrade_rate++;
+    upgrade_cost += 10;
     upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
+    upgrade_seccess = upgrade_seccesses[parseInt(upgrade_rate / 10)];
+    upgrade_percents.innerHTML =
+      '강화 성공 확률 : ' + upgrade_seccess / 10 + '%';
     upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
     upgrade_result.innerHTML = '강화 성공!';
+    money_div.innerHTML = '현재 골드 : ' + total_money;
   } else {
     if (upgrade_rate != 0) {
+      total_money -= upgrade_cost;
       upgrade_rate--;
+      upgrade_cost -= 10;
     }
     upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
+    upgrade_seccess = upgrade_seccesses[parseInt(upgrade_rate / 10)];
+    upgrade_percents.innerHTML =
+      '강화 성공 확률 : ' + upgrade_seccess / 10 + '%';
     upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
     upgrade_result.innerHTML = '강화 실패';
+    money_div.innerHTML = '현재 골드 : ' + total_money;
   }
   if (upgrade_rate == 99) {
     alert('99강 성공!');
