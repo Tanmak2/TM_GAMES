@@ -119,7 +119,7 @@ var block = new Block();
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   lineDraw();
-
+  block.drawZigzag();
   if (timeControl % 5 == 0) {
     if (leftPressd && block.x > 0) {
       block.x -= 50;
