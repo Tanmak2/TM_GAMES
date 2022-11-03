@@ -16,19 +16,40 @@
         margin: 0 auto;
         margin-top: 100px;
       }
+      div {
+        width: 800px;
+        height: 600px;
+        margin: 0 auto;
+        position: relative;
+      }
+      div button {
+        width: 200px;
+        height: 50px;
+        font-size: 30px;
+        position: absolute;
+        left: calc(50% - 100px);
+        top: 50%;
+        border: 0;
+        border-radius: 10px;
+        background-color: #b5c7ed;
+      }
     </style>
   </head>
   <body>
-    <canvas id="canvas" width="800" height="600"></canvas>
+    <div>
+      <canvas id="canvas" width="800" height="600"></canvas>
+      <button id="start_bt" onclick="Start_bt()">Start</button>
+    </div>
   </body>
   <script>
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
+    var start_bt = document.getElementById('start_bt');
     var x = canvas.width / 2;
     var y = canvas.height - 60;
     var dx = -3;
     var dy = -3;
-    var ballRadius = 10;
+    var ballRadius = 6;
     var paddleHeight = 10;
     var paddleWidth = 80;
     var paddleX = (canvas.width - paddleWidth) / 2;
@@ -42,13 +63,18 @@
     var brickOffsetTop = 50;
     var brickOffsetLeft = 55;
     var totalBricks = brickColCount * brickRowCount;
-    var isGame = true;
+    var isGame = false;
     var lives = 3;
     var bricks = [];
     for (var c = 0; c < brickColCount; c++) {
       bricks[c] = [];
       for (var r = 0; r < brickRowCount; r++) {
-        bricks[c][r] = { x: 0, y: 0, status: 2 };
+        bricks[c][r] = {
+          x: 0,
+          y: 0,
+          status: randomStatus(),
+          color: randomColors(),
+        };
       }
     }
 
@@ -57,7 +83,7 @@
     document.addEventListener('mousemove', mouseMoveHandler, false);
 
     function mouseMoveHandler(e) {
-      var relativeX = e.clientX - canvas.offsetLeft;
+      var relativeX = e.clientX - (window.innerWidth - canvas.width) / 2;
       if (relativeX > 0 && relativeX < canvas.width) {
         paddleX = relativeX - paddleWidth / 2;
       }
@@ -79,6 +105,12 @@
       }
     }
 
+    function Start_bt() {
+      start_bt.style.display = 'none';
+      isGame = true;
+      draw();
+    }
+
     function drawBricks() {
       for (var c = 0; c < brickColCount; c++) {
         for (var r = 0; r < brickRowCount; r++) {
@@ -89,7 +121,7 @@
             bricks[c][r].y = bricksY;
             ctx.beginPath();
             ctx.rect(bricksX, bricksY, brickWidth, brickHeight);
-            ctx.fillStyle = '#0095DD';
+            ctx.fillStyle = bricks[c][r].color;
             if (bricks[c][r].status == 1) {
               ctx.fillStyle = '#999';
             }
@@ -98,6 +130,25 @@
           }
         }
       }
+    }
+    function randomStatus() {
+      var ran = Math.floor(Math.random() * 2) + 2;
+      return ran;
+    }
+    function randomColors() {
+      var color = [
+        '#ffafb0',
+        '#ffafd8',
+        '#eeb7b4',
+        '#f2cfa5',
+        '#fcffb0',
+        '#b5c7ed',
+        '#bee9b4',
+        '#caa6fe',
+        '#fcc6f7',
+      ];
+      var ran = Math.floor(Math.random() * 9);
+      return color[ran];
     }
 
     function collisionDetection() {
@@ -112,12 +163,11 @@
               y < b.y + brickHeight + ballRadius
             ) {
               if (x < b.x || x > b.x + brickWidth) {
-                console.log('x');
                 dx = -dx;
               } else {
-                console.log('y');
                 dy = -dy;
               }
+              b.color = randomColors();
               b.status--;
               if (b.status == 0) {
                 totalBricks--;
@@ -178,7 +228,11 @@
         dy = -dy;
       } else if (y + dy > canvas.height - ballRadius - 30) {
         if (x > paddleX && x < paddleX + paddleWidth) {
-          dy = -dy;
+          if (dy > 0) {
+            dy = -(dy + 0.3);
+          } else {
+            dy = -(dy - 0.3);
+          }
           if (x < paddleX + 20) {
             if (dx > 0) {
               dx = -dx;
@@ -225,7 +279,9 @@
       }
       x += dx;
       y += dy;
-      requestAnimationFrame(draw);
+      if (isGame) {
+        requestAnimationFrame(draw);
+      }
     }
     draw();
   </script>
