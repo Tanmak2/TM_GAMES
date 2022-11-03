@@ -9,6 +9,17 @@ var upgrade_box = document.getElementById('upgrade_box');
 var shop_box = document.getElementById('shop_box');
 var lotto_box = document.getElementById('lotto_box');
 var percent_box = document.getElementById('percent_box');
+var Check_upgrade = false;
+var Check_shop = false;
+var Check_lotto = false;
+var Check_percent = false;
+var upgrade_stage = document.getElementById('upgrade_stage');
+var upgrade_money = document.getElementById('upgrade_money');
+var upgrade_result = document.getElementById('upgrade_result');
+var upgrade_seccess = 980;
+var upgrade_rate = 0;
+var upgrade_cost = 0;
+document.getElementById('upgrade_bt').addEventListener('click', upgrade_bt);
 document.addEventListener('keydown', keyDownHandler);
 document.getElementById('upgrade').addEventListener('click', showUpgrade);
 document.getElementById('shop').addEventListener('click', showShop);
@@ -27,8 +38,31 @@ function click_money() {
   money_div.innerHTML = '현재 골드 : ' + total_money;
 }
 
+function closeMenu() {
+  upgrade.style.backgroundColor = 'white';
+  shop.style.backgroundColor = 'white';
+  lotto.style.backgroundColor = 'white';
+  percent.style.backgroundColor = 'white';
+  upgrade_box.style.display = 'none';
+  shop_box.style.display = 'none';
+  lotto_box.style.display = 'none';
+  percent_box.style.display = 'none';
+  Check_upgrade = false;
+  Check_shop = false;
+  Check_lotto = false;
+  Check_percent = false;
+}
+
 function showUpgrade() {
-  upgrade.style.backgroundColor = 'red';
+  if (Check_upgrade) {
+    closeMenu();
+    return;
+  }
+  Check_upgrade = true;
+  Check_shop = false;
+  Check_lotto = false;
+  Check_percent = false;
+  upgrade.style.backgroundColor = '#ffafb0';
   shop.style.backgroundColor = 'white';
   lotto.style.backgroundColor = 'white';
   percent.style.backgroundColor = 'white';
@@ -38,8 +72,16 @@ function showUpgrade() {
   percent_box.style.display = 'none';
 }
 function showShop() {
+  if (Check_shop) {
+    closeMenu();
+    return;
+  }
+  Check_upgrade = false;
+  Check_shop = true;
+  Check_lotto = false;
+  Check_percent = false;
   upgrade.style.backgroundColor = 'white';
-  shop.style.backgroundColor = 'blue';
+  shop.style.backgroundColor = '#ffafd8';
   lotto.style.backgroundColor = 'white';
   percent.style.backgroundColor = 'white';
   upgrade_box.style.display = 'none';
@@ -48,9 +90,17 @@ function showShop() {
   percent_box.style.display = 'none';
 }
 function showLotto() {
+  if (Check_lotto) {
+    closeMenu();
+    return;
+  }
+  Check_upgrade = false;
+  Check_shop = false;
+  Check_lotto = true;
+  Check_percent = false;
   upgrade.style.backgroundColor = 'white';
   shop.style.backgroundColor = 'white';
-  lotto.style.backgroundColor = 'blueviolet';
+  lotto.style.backgroundColor = '#eeb7b4';
   percent.style.backgroundColor = 'white';
   upgrade_box.style.display = 'none';
   shop_box.style.display = 'none';
@@ -58,12 +108,40 @@ function showLotto() {
   percent_box.style.display = 'none';
 }
 function showPercent() {
+  if (Check_percent) {
+    closeMenu();
+    return;
+  }
+  Check_upgrade = false;
+  Check_shop = false;
+  Check_lotto = false;
+  Check_percent = true;
   upgrade.style.backgroundColor = 'white';
   shop.style.backgroundColor = 'white';
   lotto.style.backgroundColor = 'white';
-  percent.style.backgroundColor = 'brown';
+  percent.style.backgroundColor = '#f2cfa5';
   upgrade_box.style.display = 'none';
   shop_box.style.display = 'none';
   lotto_box.style.display = 'none';
   percent_box.style.display = 'block';
+}
+
+function upgrade_bt() {
+  var upgrade_percent = Math.floor(Math.random() * 1000) + 1;
+  if (upgrade_seccess >= upgrade_percent) {
+    upgrade_rate++;
+    upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
+    upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
+    upgrade_result.innerHTML = '강화 성공!';
+  } else {
+    if (upgrade_rate != 0) {
+      upgrade_rate--;
+    }
+    upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
+    upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
+    upgrade_result.innerHTML = '강화 실패';
+  }
+  if (upgrade_rate == 99) {
+    alert('99강 성공!');
+  }
 }
