@@ -157,10 +157,10 @@ function upgrade_bt() {
     alert('마지막 강화입니다.');
     return;
   }
-  // if (total_money < upgrade_cost) {
-  //   alert('골드가 부족합니다.');
-  //   return;
-  // }
+  if (total_money < upgrade_cost) {
+    alert('골드가 부족합니다.');
+    return;
+  }
   var upgrade_percent = Math.floor(Math.random() * 1000) + 1;
   var upgrade_seccess = upgrade_seccesses[upgrade_rate];
   upgrade_total_count++;
