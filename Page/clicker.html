@@ -23,12 +23,14 @@
           </div>
           <div class="contents">
             <div class="box-wrap">
-              <div>게임목표 : 나무몽둥이를 +99강화하기</div>
+              <div>게임목표 : 나무몽둥이를 +25강화하기</div>
               <div>게임방법 : 돈벌기 버튼으로 돈을 벌어 강화 및 복권구매</div>
             </div>
             <div id="upgrade_box" class="box-wrap">
               <div id="upgrade_stage">현재 강화 수치 : 나무몽둥이+0</div>
-              <div id="upgrade_percents">강화 성공 확률 : 95%</div>
+              <div id="upgrade_percents">
+                강화 성공 확률 : 95% | 파괴 확률 : 0%
+              </div>
               <div id="upgrade_money">현재 강화 비용 : 10골드</div>
               <div id="upgrade_result"></div>
               <button id="upgrade_bt">강화하기</button>
@@ -37,14 +39,84 @@
               <button>구매하기</button>
             </div>
             <div id="lotto_box" class="box-wrap">
-              <button>복권구매</button>
+              <div id="lotto_result">결과는?</div>
+              <div id="lotto_gold">당첨금 : 0골드</div>
+              <button id="lotto_bt">복권구매</button>
             </div>
-            <div id="percent_box" class="box-wrap"></div>
+            <div id="percent_box" class="box-wrap box-flex">
+              <div class="s">
+                <ul>
+                  <li>0 ➡ 1 성공확률 : 95% | 실패(파괴)확률 : 5%(0%)</li>
+                  <li>1 ➡ 2성공확률 : 90% | 실패(파괴)확률 : 10%(0%)</li>
+                  <li>2 ➡ 3성공확률 : 85% | 실패(파괴)확률 : 15%(0%)</li>
+                  <li>3 ➡ 4성공확률 : 85% | 실패(파괴)확률 : 15%(0%)</li>
+                  <li>4 ➡ 5성공확률 : 80% | 실패(파괴)확률 : 20%(0%)</li>
+                  <li>5 ➡ 6성공확률 : 75% | 유지(파괴)확률 : 25%(0%)</li>
+                  <li>6 ➡ 7성공확률 : 70% | 실패(파괴)확률 : 30%(0%)</li>
+                  <li>7 ➡ 8성공확률 : 65% | 실패(파괴)확률 : 45%(0%)</li>
+                  <li>8 ➡ 9성공확률 : 60% | 실패(파괴)확률 : 40%(0%)</li>
+                  <li>9 ➡ 10성공확률 : 55% | 실패(파괴)확률 : 45%(0%)</li>
+                  <li>10 ➡ 11성공확률 : 50% | 유지(파괴)확률 : 50%(0%)</li>
+                  <li>11 ➡ 12성공확률 : 45% | 실패(파괴)확률 : 55%(0%)</li>
+                  <li>12 ➡ 13성공확률 : 40% | 실패(파괴)확률 : 59.4%(0.6%)</li>
+                  <li>13 ➡ 14성공확률 : 35% | 실패(파괴)확률 : 63.7%(1.3%)</li>
+                  <li>14 ➡ 15성공확률 : 30% | 실패(파괴)확률 : 68.6%(1.4%)</li>
+                  <li>15 ➡ 16성공확률 : 30% | 유지(파괴)확률 : 67.9%(2.1%)</li>
+                  <li>16 ➡ 17성공확률 : 30% | 실패(파괴)확률 : 67.9%(2.1%)</li>
+                  <li>17 ➡ 18성공확률 : 30% | 실패(파괴)확률 : 67.9%(2.1%)</li>
+                  <li>18 ➡ 19성공확률 : 30% | 실패(파괴)확률 : 67.2%(2.8%)</li>
+                  <li>19 ➡ 20성공확률 : 30% | 실패(파괴)확률 : 67.2%(2.8%)</li>
+                  <li>20 ➡ 21성공확률 : 30% | 유지(파괴)확률 : 63%(7%)</li>
+                  <li>21 ➡ 22성공확률 : 30% | 실패(파괴)확률 : 63%(7%)</li>
+                  <li>22 ➡ 23성공확률 : 3% | 실패(파괴)확률 : 77.6%(19.4%)</li>
+                  <li>23 ➡ 24성공확률 : 2% | 실패(파괴)확률 : 68.6%(29.4%)</li>
+                  <li>24 ➡ 25성공확률 : 1% | 실패(파괴)확률 : 59.4%(39.6%)</li>
+                </ul>
+              </div>
+              <div>
+                <ul id="lotto-percent">
+                  <li>
+                    1등
+                    <div>0.01%</div>
+                    <div>당첨금 : 150,000,000골드</div>
+                  </li>
+                  <li>
+                    2등
+                    <div>0.05%</div>
+                    <div>당첨금 : 4,500,000골드</div>
+                  </li>
+                  <li>
+                    3등
+                    <div>0.1%</div>
+                    <div>당첨금 : 150,000골드</div>
+                  </li>
+                  <li>
+                    4등
+                    <div>1%</div>
+                    <div>당첨금 : 5,000골드</div>
+                  </li>
+                  <li>
+                    5등
+                    <div>10%</div>
+                    <div>당첨금 : 500골드</div>
+                  </li>
+                  <li>
+                    6등
+                    <div>88.84%</div>
+                    <div>당첨금 : 0골드</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         <div class="right-sidemenu">
-          <button id="get_money">돈벌기</button>
           <div id="money">현재 골드 : 0</div>
+          <div id="up_to_cnt">총 강화 횟수 : 0회</div>
+          <div id="up_se_cnt">총 강화 성공 횟수 : 0회</div>
+          <div id="up_fa_cnt">총 강화 실패 횟수 : 0회</div>
+          <div id="up_de_cnt">총 무기 파괴 횟수 : 0회</div>
+          <button id="get_money">돈벌기</button>
         </div>
       </div>
     </div>

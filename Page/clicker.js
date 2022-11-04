@@ -16,16 +16,34 @@ var Check_percent = false;
 var upgrade_stage = document.getElementById('upgrade_stage');
 var upgrade_money = document.getElementById('upgrade_money');
 var upgrade_result = document.getElementById('upgrade_result');
-var upgrade_percents = document.getElementById('upgrade_percent');
-var upgrade_seccesses = [950, 900, 850, 800, 750, 700, 650, 600, 550, 500];
+var upgrade_percents = document.getElementById('upgrade_percents');
+var lotto_result = document.getElementById('lotto_result');
+var lotto_gold = document.getElementById('lotto_gold');
+var up_to_cnt = document.getElementById('up_to_cnt');
+var up_se_cnt = document.getElementById('up_se_cnt');
+var up_fa_cnt = document.getElementById('up_fa_cnt');
+var up_de_cnt = document.getElementById('up_de_cnt');
+var upgrade_seccesses = [
+  950, 900, 850, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300,
+  300, 300, 300, 300, 300, 300, 300, 30, 20, 10,
+];
+var upgrade_destroy = [
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 13, 14, 21, 21, 21, 28, 28, 70, 70,
+  194, 294, 396,
+];
 var upgrade_rate = 0;
 var upgrade_cost = 10;
+var upgrade_total_count = 0;
+var upgrade_seccess_count = 0;
+var upgrade_fail_count = 0;
+var upgrade_destory_count = 0;
 document.getElementById('upgrade_bt').addEventListener('click', upgrade_bt);
 document.getElementById('upgrade').addEventListener('click', showUpgrade);
 document.getElementById('shop').addEventListener('click', showShop);
 document.getElementById('lotto').addEventListener('click', showLotto);
 document.getElementById('percent').addEventListener('click', showPercent);
 document.getElementById('get_money').addEventListener('click', click_money);
+document.getElementById('lotto_bt').addEventListener('click', lotto_bt);
 
 function click_money() {
   total_money += money;
@@ -117,46 +135,117 @@ function showPercent() {
   upgrade_box.style.display = 'none';
   shop_box.style.display = 'none';
   lotto_box.style.display = 'none';
-  percent_box.style.display = 'block';
+  percent_box.style.display = 'flex';
 }
 
 function upgrade_bt() {
-  if (upgrade_rate == 99) {
+  if (upgrade_rate == 25) {
     alert('마지막 강화입니다.');
     return;
   }
-  if (total_money < upgrade_cost) {
-    alert('골드가 부족합니다.');
-    return;
-  }
+  // if (total_money < upgrade_cost) {
+  //   alert('골드가 부족합니다.');
+  //   return;
+  // }
   var upgrade_percent = Math.floor(Math.random() * 1000) + 1;
-  var upgrade_seccess = upgrade_seccesses[parseInt(upgrade_rate / 10)];
+  var upgrade_seccess = upgrade_seccesses[upgrade_rate];
+  upgrade_total_count++;
+  var destroy_sum =
+    upgrade_seccesses[upgrade_rate] + upgrade_destroy[upgrade_rate];
   if (upgrade_percent <= upgrade_seccess) {
+    upgrade_seccess_count++;
     total_money -= upgrade_cost;
     upgrade_rate++;
     upgrade_cost += 10;
     upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
-    upgrade_seccess = upgrade_seccesses[parseInt(upgrade_rate / 10)];
+    upgrade_seccess = upgrade_seccesses[upgrade_rate];
     upgrade_percents.innerHTML =
-      '강화 성공 확률 : ' + upgrade_seccess / 10 + '%';
+      '강화 성공 확률 : ' +
+      upgrade_seccess / 10 +
+      '% | 파괴 확률 : ' +
+      upgrade_destroy[upgrade_rate] / 10 +
+      '%';
     upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
     upgrade_result.innerHTML = '강화 성공!';
     money_div.innerHTML = '현재 골드 : ' + total_money;
+  } else if (
+    upgrade_percent > upgrade_seccess &&
+    upgrade_percent <= destroy_sum
+  ) {
+    upgrade_destory_count++;
+    total_money -= upgrade_cost;
+    upgrade_rate = 0;
+    upgrade_cost = 10;
+    upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
+    upgrade_seccess = upgrade_seccesses[upgrade_rate];
+    upgrade_percents.innerHTML =
+      '강화 성공 확률 : ' +
+      upgrade_seccess / 10 +
+      '% | 파괴 확률 : ' +
+      upgrade_destroy[upgrade_rate] / 10 +
+      '%';
+    upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
+    upgrade_result.innerHTML = '무기 파괴!';
+    money_div.innerHTML = '현재 골드 : ' + total_money;
   } else {
-    if (upgrade_rate != 0) {
+    if (upgrade_rate % 5 != 0) {
       total_money -= upgrade_cost;
       upgrade_rate--;
       upgrade_cost -= 10;
     }
+    upgrade_fail_count++;
     upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
-    upgrade_seccess = upgrade_seccesses[parseInt(upgrade_rate / 10)];
+    upgrade_seccess = upgrade_seccesses[upgrade_rate];
     upgrade_percents.innerHTML =
-      '강화 성공 확률 : ' + upgrade_seccess / 10 + '%';
+      '강화 성공 확률 : ' +
+      upgrade_seccess / 10 +
+      '% | 파괴 확률 : ' +
+      upgrade_destroy[upgrade_rate] / 10 +
+      '%';
     upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
     upgrade_result.innerHTML = '강화 실패';
     money_div.innerHTML = '현재 골드 : ' + total_money;
   }
-  if (upgrade_rate == 99) {
-    alert('99강 성공!');
+  up_to_cnt.innerHTML = '총 강화 횟수 : ' + upgrade_total_count + '회';
+  up_se_cnt.innerHTML = '총 강화 성공 횟수 : ' + upgrade_seccess_count + '회';
+  up_fa_cnt.innerHTML = '총 강화 실패 횟수 : ' + upgrade_fail_count + '회';
+  up_de_cnt.innerHTML = '총 무기 파괴 횟수 : ' + upgrade_destory_count + '회';
+  if (upgrade_rate == 25) {
+    alert('25강 성공!');
   }
+}
+
+function lotto_bt() {
+  if (total_money < 100) {
+    alert('골드가 부족합니다.');
+    return;
+  }
+  var lotto_ran = Math.floor(Math.random() * 10000) + 1;
+  total_money -= 100;
+
+  if (lotto_ran <= 1000) {
+    lotto_result.innerHTML = '5등!';
+    lotto_gold.innerHTML = '당첨금 : 500골드';
+    total_money += 500;
+  } else if (lotto_ran > 1000 && lotto_ran <= 1100) {
+    lotto_result.innerHTML = '4등!';
+    lotto_gold.innerHTML = '당첨금 : 5,000골드';
+    total_money += 5000;
+  } else if (lotto_ran > 1100 && lotto_ran <= 1110) {
+    lotto_result.innerHTML = '3등!';
+    lotto_gold.innerHTML = '당첨금 : 150,000골드';
+    total_money += 150000;
+  } else if (lotto_ran > 1110 && lotto_ran <= 1115) {
+    lotto_result.innerHTML = '2등!';
+    lotto_gold.innerHTML = '당첨금 : 4,500,000골드';
+    total_money += 4500000;
+  } else if (lotto_ran == 7777) {
+    lotto_result.innerHTML = '1등!';
+    lotto_gold.innerHTML = '당첨금 : 150,000,000골드';
+    total_money += 150000000;
+  } else {
+    lotto_result.innerHTML = '6등';
+    lotto_gold.innerHTML = '당첨금 : 0골드';
+  }
+  money_div.innerHTML = '현재 골드 : ' + total_money;
 }
