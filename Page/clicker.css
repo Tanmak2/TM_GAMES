@@ -101,6 +101,12 @@
   position: absolute;
   left: calc(50% - 100px);
 }
+#buy_bt {
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  left: calc(50% - 100px);
+}
 #lotto_bt {
   width: 200px;
   height: 50px;

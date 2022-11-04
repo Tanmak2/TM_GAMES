@@ -1,4 +1,4 @@
-var total_money = 0;
+var total_money = 10000;
 var money = 1;
 var money_div = document.getElementById('money');
 var upgrade = document.getElementById('upgrade');
@@ -23,6 +23,7 @@ var up_to_cnt = document.getElementById('up_to_cnt');
 var up_se_cnt = document.getElementById('up_se_cnt');
 var up_fa_cnt = document.getElementById('up_fa_cnt');
 var up_de_cnt = document.getElementById('up_de_cnt');
+var de_sh_cnt = document.getElementById('de_sh_cnt');
 var upgrade_seccesses = [
   950, 900, 850, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300,
   300, 300, 300, 300, 300, 300, 300, 30, 20, 10,
@@ -37,6 +38,7 @@ var upgrade_total_count = 0;
 var upgrade_seccess_count = 0;
 var upgrade_fail_count = 0;
 var upgrade_destory_count = 0;
+var destory_shield = 0;
 document.getElementById('upgrade_bt').addEventListener('click', upgrade_bt);
 document.getElementById('upgrade').addEventListener('click', showUpgrade);
 document.getElementById('shop').addEventListener('click', showShop);
@@ -44,6 +46,18 @@ document.getElementById('lotto').addEventListener('click', showLotto);
 document.getElementById('percent').addEventListener('click', showPercent);
 document.getElementById('get_money').addEventListener('click', click_money);
 document.getElementById('lotto_bt').addEventListener('click', lotto_bt);
+document.getElementById('buy_bt').addEventListener('click', buy_destroy_shield);
+
+function buy_destroy_shield() {
+  if (total_money < 100) {
+    alert('골드가 부족합니다.');
+    return;
+  }
+  total_money -= 100;
+  destory_shield++;
+  de_sh_cnt.innerHTML = '파괴 방지권 : ' + destory_shield + '장';
+  money_div.innerHTML = '현재 골드 : ' + total_money;
+}
 
 function click_money() {
   total_money += money;
@@ -172,21 +186,56 @@ function upgrade_bt() {
     upgrade_percent > upgrade_seccess &&
     upgrade_percent <= destroy_sum
   ) {
-    upgrade_destory_count++;
-    total_money -= upgrade_cost;
-    upgrade_rate = 0;
-    upgrade_cost = 10;
-    upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
-    upgrade_seccess = upgrade_seccesses[upgrade_rate];
-    upgrade_percents.innerHTML =
-      '강화 성공 확률 : ' +
-      upgrade_seccess / 10 +
-      '% | 파괴 확률 : ' +
-      upgrade_destroy[upgrade_rate] / 10 +
-      '%';
-    upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
-    upgrade_result.innerHTML = '무기 파괴!';
-    money_div.innerHTML = '현재 골드 : ' + total_money;
+    if (destory_shield >= upgrade_rate) {
+      if (confirm('무기가 파괴 되었습니다. 방지권을 사용하시겠습니까?')) {
+        total_money -= upgrade_cost;
+        destory_shield -= upgrade_rate;
+        upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
+        upgrade_seccess = upgrade_seccesses[upgrade_rate];
+        upgrade_percents.innerHTML =
+          '강화 성공 확률 : ' +
+          upgrade_seccess / 10 +
+          '% | 파괴 확률 : ' +
+          upgrade_destroy[upgrade_rate] / 10 +
+          '%';
+        upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
+        upgrade_result.innerHTML = '파괴 방지권 사용!';
+        money_div.innerHTML = '현재 골드 : ' + total_money;
+        de_sh_cnt.innerHTML = '파괴 방지권 : ' + destory_shield + '장';
+      } else {
+        upgrade_destory_count++;
+        total_money -= upgrade_cost;
+        upgrade_rate = 0;
+        upgrade_cost = 10;
+        upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
+        upgrade_seccess = upgrade_seccesses[upgrade_rate];
+        upgrade_percents.innerHTML =
+          '강화 성공 확률 : ' +
+          upgrade_seccess / 10 +
+          '% | 파괴 확률 : ' +
+          upgrade_destroy[upgrade_rate] / 10 +
+          '%';
+        upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
+        upgrade_result.innerHTML = '무기 파괴!';
+        money_div.innerHTML = '현재 골드 : ' + total_money;
+      }
+    } else {
+      upgrade_destory_count++;
+      total_money -= upgrade_cost;
+      upgrade_rate = 0;
+      upgrade_cost = 10;
+      upgrade_stage.innerHTML = '현재 강화 수치 : 나무몽둥이+' + upgrade_rate;
+      upgrade_seccess = upgrade_seccesses[upgrade_rate];
+      upgrade_percents.innerHTML =
+        '강화 성공 확률 : ' +
+        upgrade_seccess / 10 +
+        '% | 파괴 확률 : ' +
+        upgrade_destroy[upgrade_rate] / 10 +
+        '%';
+      upgrade_money.innerHTML = '현재 강화 비용 : ' + upgrade_cost + '골드';
+      upgrade_result.innerHTML = '무기 파괴!';
+      money_div.innerHTML = '현재 골드 : ' + total_money;
+    }
   } else {
     if (upgrade_rate % 5 != 0) {
       total_money -= upgrade_cost;
