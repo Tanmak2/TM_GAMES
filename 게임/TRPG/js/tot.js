@@ -59,7 +59,7 @@ function Battle(){
             logMessage("남은 체력은" + hero.hp,'Yellow');
             cnt++;
             
-            if(cnt == 2){
+            if(cnt == 3){
                 logMessage(hero.name + " 은 썩은 살점을 털어내고 앞으로 전진합니다", '#BCE55C');
                 logMessage("저 멀리 신음소리가 들려옵니다", '#BCE55C');
                 Battle_two();
