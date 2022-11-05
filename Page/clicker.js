@@ -1,4 +1,4 @@
-var total_money = 10000;
+var total_money = 0;
 var money = 1;
 var money_div = document.getElementById('money');
 var upgrade = document.getElementById('upgrade');
