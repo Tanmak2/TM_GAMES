@@ -17,6 +17,12 @@ document.getElementById('dungeon').addEventListener('click', showdungeon);
 document.getElementById('missions').addEventListener('click', showmissions);
 document.getElementById('store').addEventListener('click', showstore);
 
+document.getElementById('dungeon_cave').addEventListener('click', dungeon_cave);
+
+function dungeon_cave(){
+    document.getElementById('log_box').style.display = 'block';
+}
+
 function showmenu(){
     menu.style.backgroundColor = 'red';
     state.style.backgroundColor = 'teal';

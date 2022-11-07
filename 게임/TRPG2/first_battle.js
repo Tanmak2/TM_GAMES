@@ -266,7 +266,7 @@ function Boss_battle() {
 
 
             for(var i = 0; i<hero.it.length; i++){ // 진짜 내 it 에 있는지 확인하기 위한 for문
-                it_box.innerHTML = hero.it[i].name;
+                // it_box.innerHTML = hero.it[i].name;
 
                 // logMessage(hero.it[i].name);
 
