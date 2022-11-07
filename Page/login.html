@@ -1,126 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-</head>
-<body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="init.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1>환영합니다</h1>
-        <div class="form-group">
-            <label for="email">Email address:</label>
-            <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd">
-        </div>
-        <div class="form-group">
-            <label for="name">NikName:</label>
-            <input type="text" class="form-control" id="name">
-        </div>
-        <button type="button" class="btn">가입</button>
-    </div>
-
-    <div class="container">
+      <div class="top">
+        <div class="top-logo">로고 이미지</div>
+      </div>
+      <div class="join-wrap">
         <h1>로그인</h1>
         <div class="form-group">
-            <label for="login_email">Email address:</label>
-            <input type="email" class="form-control" id="login_email">
+          <label for="userId">아이디 :</label>
+          <input type="text" class="form-control" id="userId" />
         </div>
         <div class="form-group">
-            <label for="login_pwd">Password:</label>
-            <input type="password" class="form-control" id="login_pwd">
+          <label for="pwd">비밀번호 :</label>
+          <input type="password" class="form-control" id="pwd" />
         </div>
-
-        <button type="button" class="login">로그인</button>
+        <button type="button" class="btn">로그인</button>
+      </div>
     </div>
-    <button class="test">테스트</button>
-    <div id="result"></div>
-</body>
-<script type="module">
+  </body>
+  <script type="module">
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
-    import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js';
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+    } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js';
+    import {
+      getDatabase,
+      ref,
+      set,
+      get,
+      child,
+    } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js';
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
     var userInfo;
-  
+
     // Your web app's Firebase configuration
-    // here
-  
+    const firebaseConfig = {
+      apiKey: 'AIzaSyDRbfbfagCEy7u5KR7UK0KJiuyNDskeN58',
+      authDomain: 'doubleyun-54389.firebaseapp.com',
+      databaseURL: 'https://doubleyun-54389-default-rtdb.firebaseio.com',
+      projectId: 'doubleyun-54389',
+      storageBucket: 'doubleyun-54389.appspot.com',
+      messagingSenderId: '976437050574',
+      appId: '1:976437050574:web:142e58ef48ae8a858a649f',
+    };
+
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const database = getDatabase(app);
 
-    $(document).ready(function(){
+    $(document).on('click', '.btn', function () {
+      var userId = $('#userId').val() + '@dy.com';
+      var password = $('#pwd').val();
 
-    $(document).on('click','.btn',function(){
-        var email = $('#email').val();
-        var password = $('#pwd').val();
-        var name = $('#name').val();
-
-        createUserWithEmailAndPassword(auth, email, password).then(function(user){
-            userInfo = user.user;
-            logUser();
-
-        }, function(error){
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(errorMessage);
-        });
-
-        function logUser(){
-            set(ref(database, 'users/' + userInfo.uid),{
-                name: name,
-            });
-            alert("가입성공");
-            // window.location.href = "index.html";
-        }
-    })
-})
-
-$(document).on('click','.login',function(){
-    var email = $("#login_email").val();
-    var password = $('#login_pwd').val();
-
-    signInWithEmailAndPassword(auth, email, password).then(function(user){
-        userInfo = user.user;
-        window.location.href = "index.html";
-
-    }, function(error){
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert(errorMessage);
+      signInWithEmailAndPassword(auth, userId, password).then(
+        function (user) {
+          userInfo = user.user;
+          window.location.href = 'index.html';
+        },
+        function (error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+        },
+      );
     });
-})
-
-$(document).on('click','.test',function(){
-    var res = $('#result');
-    const dbref = ref(database);
-    get(child(dbref, 'users/'+userInfo.uid)).then(function(snapshot){
-        if(snapshot.exists()){
-            res.text(snapshot.val().name);
-        }
-        else{
-            res.text("No data");
-        }
-    }), function(error){
-        res.text(error);
-    }
-})
-
-function res(user){
-    var result = $('#result');
-    var displayName = user.displayName;
-    var email = user.email;
-    result.append('displayName : '+displayName+' email : '+email);
-}
   </script>
 </html>
