@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  background-color: #212121;
 }
 #mouse {
   width: 50px;
@@ -17,56 +18,60 @@
   width: 100%;
   height: 100px;
   display: flex;
-  background-color: aqua;
 }
 .logo {
   width: 15%;
-  height: 100%;
-  background-color: aquamarine;
+  height: 100px;
   text-align: center;
   font-size: 30px;
+  color: white;
 }
 .logo-img {
   width: 85%;
-  height: 100%;
-  background-color: bisque;
-  line-height: 110px;
+  height: 100px;
+  line-height: 100px;
   text-align: center;
 }
-.gamestart {
-  width: 100%;
-  height: 70%;
-  background-color: cadetblue;
-}
 .join-bt-wrap {
-  width: 100%;
-  height: 30%;
-  background-color: chocolate;
-  display: flex;
-  justify-content: space-between;
-}
-.join-bt-wrap button {
-  padding: 0;
-  margin: 0;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  text-align: center;
 }
 .contents-wrap {
   width: 100%;
   height: calc(100vh - 100px);
   display: flex;
 }
+.logout {
+  cursor: pointer;
+}
 .side-wrap {
   width: 15vw;
-  height: 100%;
-  background-color: coral;
+  height: 94%;
 }
 .user-info-wrap {
   width: 15vw;
-  height: 100%;
-  background-color: burlywood;
+  height: 94%;
+  background-color: #313131;
+  color: white;
+}
+.login-info-on {
+  display: block;
+}
+.login-info-off {
+  display: none;
+}
+.info-wrap {
+  display: flex;
+  justify-content: center;
 }
 .content {
   width: 70vw;
-  height: 100%;
+  height: 94%;
   display: grid;
   justify-content: center;
   align-content: center;
@@ -74,17 +79,10 @@
   grid-template-rows: repeat(4, 22.8%);
   gap: 1.2rem;
 }
-.footer-wrap {
-  width: 100%;
-  height: 200px;
-  background-color: blueviolet;
-  margin-top: 10px;
-}
 .box {
   border-radius: 1rem;
   width: 100%;
   height: 100%;
-  background-color: darkgray;
   position: relative;
   cursor: pointer;
 }

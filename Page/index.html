@@ -28,8 +28,8 @@
         <div class="side-wrap"></div>
         <div class="content">
           <div class="box box1x1">
-            <img src="picture1.jpg" alt="" />
-            <div class="game-title">게임이름</div>
+            <img src="upgrade.PNG" alt="" />
+            <div class="game-title">나무몽둥이 강화하기</div>
           </div>
           <div class="box box1x1">
             <img src="picture1.jpg" alt="" />
@@ -60,8 +60,8 @@
             <div class="game-title">게임이름</div>
           </div>
           <div class="box box2x2">
-            <img src="picture1.jpg" alt="" />
-            <div class="game-title">게임이름</div>
+            <img src="smashing.PNG" alt="" />
+            <div class="game-title">Smashing Capsule Hero</div>
           </div>
           <div class="box box4x2">
             <img src="picture1.jpg" alt="" />
@@ -69,18 +69,34 @@
           </div>
         </div>
         <div class="user-info-wrap">
-          <div class="gamestart"></div>
           <div class="join-bt-wrap">
-            <button class="login">로그인</button>
-            <button class="join">회원가입</button>
+            <div id="login_before" class="login-info-on">
+              <div>로그인 후 이용 가능합니다.</div>
+              <hr />
+              <a href="login.html">로그인</a> |
+              <a href="join.html">회원가입</a>
+            </div>
+            <div id="login_after" class="login-info-off">
+              <div id="result"></div>
+              <hr />
+              <a id="my_info" href="#">내정보</a> |
+              <a id="my_post" href="#">내 글</a> |
+              <a id="my_message" href="#">쪽지함</a>
+              <hr />
+              <div class="info-wrap">
+                <div>레벨 :&nbsp;</div>
+                <div id="level"></div>
+              </div>
+              <div class="info-wrap">
+                <div>포인트 :&nbsp;</div>
+                <div id="point"></div>
+              </div>
+              <div class="logout">로그아웃</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="footer-wrap"></div>
     </div>
-    <!-- <a href="login.html">로그인</a>
-    <button class="logout">로그아웃</button>
-    <div id="result"></div> -->
   </body>
   <script type="module">
     // Import the functions you need from the SDKs you need
@@ -103,10 +119,20 @@
 
     var userInfo;
     var name;
+    var level;
+    var point;
     var loginUserKey;
 
     // Your web app's Firebase configuration
-    // here
+    const firebaseConfig = {
+      apiKey: 'AIzaSyDRbfbfagCEy7u5KR7UK0KJiuyNDskeN58',
+      authDomain: 'doubleyun-54389.firebaseapp.com',
+      databaseURL: 'https://doubleyun-54389-default-rtdb.firebaseio.com',
+      projectId: 'doubleyun-54389',
+      storageBucket: 'doubleyun-54389.appspot.com',
+      messagingSenderId: '976437050574',
+      appId: '1:976437050574:web:142e58ef48ae8a858a649f',
+    };
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -121,12 +147,21 @@
           const dbRef = ref(database);
           get(child(dbRef, 'users/' + userInfo.uid)).then(function (snapshot) {
             if (snapshot.exists()) {
-              $('#result').text('반가워요! ' + snapshot.val().name + '님!');
+              document
+                .getElementById('login_before')
+                .setAttribute('class', 'login-info-off');
+              document
+                .getElementById('login_after')
+                .setAttribute('class', 'login-info-on');
+              $('#result').text(snapshot.val().name + '님! ' + '반가워요! ');
+              $('#level').text(snapshot.val().level);
+              $('#point').text(snapshot.val().point);
               name = snapshot.val().name;
+              level = snapshot.val().level;
+              point = snapshot.val().point;
               loginUserKey = snapshot.key;
               return true;
             } else {
-              $('#result').text('No Data!');
             }
           });
         } else {
@@ -137,7 +172,12 @@
     $(document).on('click', '.logout', function () {
       auth.signOut().then(function () {
         alert('로그아웃 되었습니다.');
-        window.location.href = 'index.html';
+        document
+          .getElementById('login_before')
+          .setAttribute('class', 'login-info-on');
+        document
+          .getElementById('login_after')
+          .setAttribute('class', 'login-info-off');
       }),
         function (error) {
           if (error) {
@@ -155,6 +195,11 @@
       box[i].addEventListener('click', moveGame);
     }
     document.addEventListener('mousemove', mouseMoveHandler);
+    document.getElementById('my_info').addEventListener('click', doMy_info);
+    document.getElementById('my_post').addEventListener('click', doMy_post);
+    document
+      .getElementById('my_message')
+      .addEventListener('click', doMy_message);
 
     function mouseOverHandler(e) {
       var imgName = this.children[0].src.split('/')[5].split('.')[0];
@@ -167,13 +212,40 @@
     }
 
     function mouseMoveHandler(e) {
-      mouse.style.left = e.pageX + 10 + 'px';
-      mouse.style.top = e.pageY + 15 + 'px';
+      console.log(e.view.innerWidth);
+      if (
+        e.pageX <= e.view.innerWidth - 60 &&
+        e.pageY <= e.view.innerHeight - 65
+      ) {
+        mouse.style.left = e.pageX + 10 + 'px';
+        mouse.style.top = e.pageY + 15 + 'px';
+      }
     }
 
     function moveGame(e) {
       var imgName = this.children[0].src.split('/')[5].split('.')[0];
       window.location.href = imgName + '.html';
+    }
+
+    function doMy_info() {
+      var url = 'info.html';
+      var name = '_blank';
+      var option = 'width = 500, height = 300, top = 100, left = 200 ';
+      window.open(url, name, option);
+    }
+    function doMy_post() {
+      var url = 'info.html';
+      var name = '_blank';
+      var option =
+        'width = 500, height = 500, top = 100, left = 200, location = no, ';
+      window.open(url, name, option);
+    }
+    function doMy_message() {
+      var url = 'info.html';
+      var name = '_blank';
+      var option =
+        'width = 500, height = 500, top = 100, left = 200, resizable = no, ';
+      window.open(url, name, option);
     }
   </script>
 </html>
