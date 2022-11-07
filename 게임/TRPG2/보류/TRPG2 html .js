@@ -30,6 +30,7 @@ function showhome() {
   dungeon.style.backgroundColor = 'white';
   quest.style.backgroundColor = 'white';
   store.style.backgroundColor = 'white';
+  
   play_home.style.display = 'block';
   play_spec.style.display = 'none';
   play_dungeon.style.display = 'none';

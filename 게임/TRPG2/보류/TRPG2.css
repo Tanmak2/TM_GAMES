@@ -37,10 +37,10 @@ ul{
 #menu_list 
 ul 
 li{
-  width: 750px;
-  height: 40px;
-  margin: 0 auto;
-  padding: 0;
+    width: 750px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 0;
     display: flex;
     list-style: none;
     justify-content : space-around;
@@ -158,9 +158,3 @@ li{
     text-align: center;
     background: gray;
   }
-  /* #play_cave {
-    background-color: #2f989c;
-    display: none;
-  } */
-
-  /* --------- */
