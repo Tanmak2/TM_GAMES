@@ -93,4 +93,8 @@ li
     height: 775px;
     overflow-y: scroll;
     text-align: center;
+    background-color: black;
+    display: none;
+    position: absolute;
+    z-index: 2;
 }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나무몽둥이 강화하기</title>
+    <link rel="stylesheet" href="init.css" />
+    <link rel="stylesheet" href="test.css" />
+  </head>
+  <body>
+    <div class="main-wrap">
+      <div class="title-wrap">나무몽둥이 강화하기</div>
+      <div class="content-wrap">
+        <div class="contents-box">
+          <div class="menu-wrap">
+            <ul>
+              <li id="upgrade">강화</li>
+              <li id="shop">상점</li>
+              <li id="lotto">복권</li>
+              <li id="percent">확률표</li>
+            </ul>
+          </div>
+          <div class="contents">
+            <div class="box-wrap">
+              <div>게임목표 : 나무몽둥이를 +25강화하기</div>
+              <div>게임방법 : 돈벌기 버튼으로 돈을 벌어 강화 및 복권구매</div>
+            </div>
+            <div id="upgrade_box" class="box-wrap">
+              <div id="upgrade_stage">현재 강화 수치 : 나무몽둥이+0</div>
+              <div id="upgrade_percents">
+                강화 성공 확률 : 95% | 파괴 확률 : 0%
+              </div>
+              <div id="upgrade_money">현재 강화 비용 : 10골드</div>
+              <div id="upgrade_result">행운을 빕니다!</div>
+              <button id="upgrade_bt">강화하기</button>
+            </div>
+            <div id="shop_box" class="box-wrap">
+              <div>파괴 방지권</div>
+              <div>무기가 파괴되는걸 방지해준다.</div>
+              <div>100골드</div>
+              <button id="buy_bt">구매하기</button>
+            </div>
+            <div id="lotto_box" class="box-wrap">
+              <div id="lotto_result">결과는?</div>
+              <div id="lotto_gold">당첨금 : 0골드</div>
+              <button id="lotto_bt">복권구매</button>
+            </div>
+            <div id="percent_box" class="box-wrap box-flex">
+              <ul>
+                <li id="test1">asdf</li>
+              </ul>
+              <div id="test11">
+                <ul>
+                  <li id="test2">qwer</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right-sidemenu">
+          <div id="money">현재 골드 : 0</div>
+          <div id="up_to_cnt">총 강화 횟수 : 0회</div>
+          <div id="up_se_cnt">총 강화 성공 횟수 : 0회</div>
+          <div id="up_fa_cnt">총 강화 실패 횟수 : 0회</div>
+          <div id="up_de_cnt">총 무기 파괴 횟수 : 0회</div>
+          <div id="de_sh_cnt">파괴 방지권 : 0장</div>
+          <button id="get_money">돈벌기</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="test.js"></script>
+</html>
