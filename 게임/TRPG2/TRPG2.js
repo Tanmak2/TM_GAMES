@@ -19,23 +19,31 @@ document.getElementById('dungeon').addEventListener('click', showdungeon);
 document.getElementById('missions').addEventListener('click', showmissions);
 document.getElementById('store').addEventListener('click', showstore);
 
-document.getElementById('dungeon_cave').addEventListener('click', dungeon_cave);
-document.getElementById('test2').addEventListener('click', test2);
+// 게임 log
 
-function dungeon_cave(){
-    document.getElementById('test11').style.display = 'block';
+
+
+
+// --------------
+document.getElementById('laboratory').addEventListener('click', laboratory);
+document.getElementById('go_backwards').addEventListener('click', go_backwards);
+
+function laboratory(){
+    document.getElementById('tot_log').style.display = 'block';
 }
 
-function test2(){
-    document.getElementById('test11').style.display = 'none';
+function go_backwards(){
+    document.getElementById('tot_loglaboratory').style.display = 'none';
 }
+
+// -------------
 
 function showmenu(){
-    menu.style.backgroundColor = 'red';
-    state.style.backgroundColor = '#C6D6F7';
-    dungeon.style.backgroundColor = '#C6D6F7';
-    missions.style.backgroundColor = '#C6D6F7';
-    store.style.backgroundColor = '#C6D6F7';
+    menu.style.backgroundColor = '#F1ECE1';
+    state.style.backgroundColor = '#D3C9B5';
+    dungeon.style.backgroundColor = '#D3C9B5';
+    missions.style.backgroundColor = '#D3C9B5';
+    store.style.backgroundColor = '#D3C9B5';
 
     play_menu.style.display = 'block';
     play_state.style.display = 'none';
@@ -45,11 +53,11 @@ function showmenu(){
 }
 
 function showstate(){
-    menu.style.backgroundColor = 'teal';
-    state.style.backgroundColor = 'red';
-    dungeon.style.backgroundColor = 'teal';
-    missions.style.backgroundColor = 'teal';
-    store.style.backgroundColor = 'teal';
+    menu.style.backgroundColor = '#D3C9B5';
+    state.style.backgroundColor = '#F1ECE1';
+    dungeon.style.backgroundColor = '#D3C9B5';
+    missions.style.backgroundColor = '#D3C9B5';
+    store.style.backgroundColor = '#D3C9B5';
 
     play_menu.style.display = 'none';
     play_state.style.display = 'block';
@@ -59,11 +67,11 @@ function showstate(){
 }
 
 function showdungeon(){
-    menu.style.backgroundColor = 'teal';
-    state.style.backgroundColor = 'teal';
-    dungeon.style.backgroundColor = 'red';
-    missions.style.backgroundColor = 'teal';
-    store.style.backgroundColor = 'teal';
+    menu.style.backgroundColor = '#D3C9B5l';
+    state.style.backgroundColor = '#D3C9B5';
+    dungeon.style.backgroundColor = '#F1ECE1';
+    missions.style.backgroundColor = '#D3C9B5';
+    store.style.backgroundColor = '#D3C9B5';
 
     play_menu.style.display = 'none';
     play_state.style.display = 'none';
@@ -73,11 +81,11 @@ function showdungeon(){
 }
 
 function showmissions(){
-    menu.style.backgroundColor = 'teal';
-    state.style.backgroundColor = 'teal';
-    dungeon.style.backgroundColor = 'teal';
-    missions.style.backgroundColor = 'red';
-    store.style.backgroundColor = 'teal';
+    menu.style.backgroundColor = '#D3C9B5';
+    state.style.backgroundColor = '#D3C9B5';
+    dungeon.style.backgroundColor = '#D3C9B5';
+    missions.style.backgroundColor = '#F1ECE1';
+    store.style.backgroundColor = '#D3C9B5';
 
     play_menu.style.display = 'none';
     play_state.style.display = 'none';
@@ -87,11 +95,11 @@ function showmissions(){
 }
 
 function showstore(){
-    menu.style.backgroundColor = 'teal';
-    state.style.backgroundColor = 'teal';
-    dungeon.style.backgroundColor = 'teal';
-    missions.style.backgroundColor = 'teal';
-    store.style.backgroundColor = 'red';
+    menu.style.backgroundColor = '#D3C9B5';
+    state.style.backgroundColor = '#D3C9B5';
+    dungeon.style.backgroundColor = '#D3C9B5';
+    missions.style.backgroundColor = '#D3C9B5';
+    store.style.backgroundColor = '#F1ECE1';
 
     play_menu.style.display = 'none';
     play_state.style.display = 'none';

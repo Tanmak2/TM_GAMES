@@ -19,7 +19,7 @@ body{
 #title{
     width: 100%;
     height: 50px;
-    background: #A6B8C4;
+    background: #969691;
 }
 
 #title 
@@ -31,7 +31,7 @@ h2
 #menu_list_box{
     width: 100%;
     height: auto;
-    background: #C6D6F7;
+    background: #D3C9B5;
     display: flex;
 }
 
@@ -58,6 +58,7 @@ li
     list-style: none;
     justify-content: space-around;
     flex-flow: column;
+    display: inline;
 }
 
 #play_list_box{
@@ -87,7 +88,7 @@ img{
     display: none;
 }
 #play_dungeon{
-    background-color: #5093a2;
+    background-color:#B0ADAA;
     display: none;
 }
 
@@ -96,12 +97,19 @@ ul{
     margin: 0;
 }
 
+#play_dungeon
+ul
+li{
+    display: flex;
+    display: inline;
+}
+
 #play_missions{
-    background-color: #3c498a;
+    background-color:#B0ADAA;
     display: none;
 }
 #play_store{
-    background-color: #6b3480;
+    background-color:#B0ADAA;
     display: none;
 }
 
@@ -109,13 +117,13 @@ ul{
     display: flex;
 }
 
-#test11{
+#tot_log{
     width: 100%;
-  height: 760px;
-  background-color: rgb(188, 46, 46);
-  display: none;
-  position: absolute;
-  z-index: 2;
+    height: 780px;
+    background-color: #E3C04D;
+     display: none;
+     position: absolute;
+     z-index: 2;
 }
 
 /* ----------상태------------ */
@@ -130,27 +138,27 @@ ul{
     height: 250px;
     display: flex;
     justify-content: space-around;
-    background: teal;
+    background: #CACCCB;
 }
 
 #it_box{
     width: 100%;
     height: 650px;
-    background-color: #6b3480;
+    background-color:#D6D3D3;
 }
 
 #it_title{
     width: 100%;
     height: 20px;
     text-align: center;
-    background: #d4e57f;
+    background: #EEE5A2;
 }
 
 #it_list{
     width: 90%;
     height: 630px;
     margin: 0 auto;
-    background: hotpink;
+    background: #E3C04D;
 }
 
 /* ------상점------ */
@@ -261,6 +269,7 @@ ul{
     width: 100%;
     height: 30px;
     text-align: center;
+
 }
 
 #hero_sign_list{
@@ -277,3 +286,30 @@ ul{
     text-align: center;
     overflow-y: scroll;
 }
+
+
+/* 
+
+일반 지문 , 'black');
+
+강조 지문 , 'green');
+
+전투 지문 , 'red');
+
+강조 지문 , 'orange');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
