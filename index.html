@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta
+      name="keywords"
+      content="게임,종합게임,스낵게임,인스턴트게임,유니티,유니티게임,HTML게임,WEBGL"
+    />
+    <meta name="title" content="DYGAMES" />
+    <meta
+      name="description"
+      content="게임,종합게임,스낵게임,인스턴트게임,유니티,유니티게임,HTML게임,WEBGL"
+    />
+    <meta property="article:author" content="Sangwon Hyun" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="http://doubleyun.dev.s3-website.ap-northeast-2.amazonaws.com/static/image/logo.png"
+    />
+    <meta property="og:title" content="DYGAMES" />
+    <meta
+      property="og:url"
+      content="http://doubleyun.dev.s3-website.ap-northeast-2.amazonaws.com/"
+    />
+    <meta
+      property="og:description"
+      content="게임,종합게임,스낵게임,인스턴트게임,유니티,유니티게임,HTML게임,WEBGL"
+    />
+    <meta property="og:site_name" content="DYGAMES" />
+    <meta property="og:locale" content="ko-KR" />
+    <meta
+      name="twitter:url"
+      content="http://doubleyun.dev.s3-website.ap-northeast-2.amazonaws.com/"
+    />
+    <meta name="twitter:title" content="DYGAMES" />
+    <meta
+      name="twitter:image"
+      content="http://doubleyun.dev.s3-website.ap-northeast-2.amazonaws.com/static/image/logo.png"
+    />
+    <meta
+      name="twitter:description"
+      content="게임,종합게임,스낵게임,인스턴트게임,유니티,유니티게임,HTML게임,WEBGL"
+    />
+    <meta
+      name="naver-site-verification"
+      content="69ee81a6563051538c63f1898de57a91d089baf3"
+    />
+    <meta name="NaverBot" content="All" />
+    <meta name="NaverBot" content="index,follow" />
+    <meta name="Yeti" content="All" />
+    <meta name="Yeti" content="index,follow" />
+    <title>Double Yun</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="static/css/index.css" />
+    <link rel="stylesheet" href="static/css/init.css" />
+  </head>
+  <body>
+    <div class="main-wrap">
+      <div id="mouse"><img src="static/image/dy.png" /></div>
+      <div class="top-wrap">
+        <div class="logo"><img src="static/image/logo.png" alt="" /></div>
+        <div class="logo-img">
+          <img src="static/image/long_logo.png" alt="" />
+        </div>
+      </div>
+      <div class="contents-wrap">
+        <!-- <div class="side-wrap"></div> -->
+        <div class="content">
+          <div class="box box1x1">
+            <img src="static/image/upgrade.png" alt="" />
+            <div class="game-title">나무몽둥이 강화하기</div>
+          </div>
+          <div class="box box1x1">
+            <img src="static/image/lotto.png" alt="" />
+            <div class="game-title">로또 맞추기</div>
+          </div>
+          <div class="box box2x2">
+            <img src="static/image/smashing.png" alt="" />
+            <div class="game-title">Smashing Capsule Hero</div>
+          </div>
+          <div class="box box1x1">
+            <img src="static/image/trpg1.png" alt="" />
+            <div class="game-title">TRPG 1</div>
+          </div>
+          <div class="box box1x1">
+            <img src="static/image/trpg2.png" alt="" />
+            <div class="game-title">TRPG 2</div>
+          </div>
+          <div class="box box2x1">
+            <img src="static/image/break.png" alt="" />
+            <div class="game-title">벽돌깨기</div>
+          </div>
+          <div class="box box1x1">
+            <img src="static/image/pushing.png" alt="" />
+            <div class="game-title">Pushing Capsule Hero</div>
+          </div>
+          <div class="box box1x1">
+            <img src="static/image/trpg3.png" alt="" />
+            <div class="game-title">TRPG 3</div>
+          </div>
+          <div class="box box2x2">
+            <img src="static/image/slerg.png" alt="" />
+            <div class="game-title">Slerg</div>
+          </div>
+          <div class="box box4x2">
+            <img src="static/image/infinity.png" alt="" />
+            <div class="game-title">infinity Trush</div>
+          </div>
+        </div>
+        <div class="user-info-wrap">
+          <div class="join-bt-wrap">
+            <div id="login_before" class="login-info-on">
+              <div>로그인 후 이용 가능합니다.</div>
+              <hr />
+              <a href="static/login.html">로그인</a> |
+              <a href="static/join.html">회원가입</a>
+            </div>
+            <div id="login_after" class="login-info-off">
+              <div id="result"></div>
+              <hr />
+              <a id="my_info" href="#">내정보</a> |
+              <a id="my_post" href="#">내 글</a> |
+              <a id="my_message" href="#">쪽지함</a>
+              <hr />
+              <div class="info-wrap">
+                <div>레벨 :&nbsp;</div>
+                <div id="level"></div>
+              </div>
+              <div class="info-wrap">
+                <div>포인트 :&nbsp;</div>
+                <div id="point"></div>
+              </div>
+              <div class="logout">로그아웃</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="static/js/index.js"></script>
+</html>

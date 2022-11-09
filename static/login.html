@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/init.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="mouse"><img src="image/dy.png" /></div>
+      <div class="top">
+        <div class="top-logo"><img src="image/logo.png" alt="" /></div>
+      </div>
+      <div class="join-wrap">
+        <h1>로그인</h1>
+        <div class="form-group">
+          <label for="userId">아이디 :</label>
+          <input type="text" class="form-control" id="userId" />
+        </div>
+        <div class="form-group">
+          <label for="pwd">비밀번호 :</label>
+          <input type="password" class="form-control" id="pwd" />
+        </div>
+        <button type="button" class="login-btn">로그인</button>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/mouse.js"></script>
+</html>

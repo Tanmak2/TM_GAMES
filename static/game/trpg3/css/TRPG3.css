@@ -1,0 +1,309 @@
+
+body{
+    background: #212121;
+}
+
+/* 전체 크기 */
+
+#tot{
+    width: 100%;
+    height: 900px;
+}
+
+#game{
+    width: 1500px;
+    height: 900px;
+    margin: 0 auto;
+}
+
+#title{
+    width: 100%;
+    height: 50px;
+    background: #969691;
+}
+
+#title 
+h2
+{
+    text-align: center;
+}
+
+#menu_list_box{
+    width: 100%;
+    height: auto;
+    background: #D3C9B5;
+    display: flex;
+}
+
+#menu_list_box 
+ul 
+{
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    list-style: none;
+    justify-content : space-around;
+}
+
+#menu_list_box 
+ul
+li
+{
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    flex-flow: column;
+    display: inline;
+}
+
+#play_list_box{
+    width: 1500px;
+    height: 800px;
+    position: absolute;
+}
+
+.tot_box{
+    width: 100%;
+    height: 800px;
+}
+
+#play_menu{
+    background-color: #86E57F;
+    display: none;
+}
+
+#play_menu 
+img{
+    width: 100%;
+    height: 100%;
+}
+
+#play_state{
+    background-color: #d4e57f;
+    display: none;
+}
+#play_dungeon{
+    background-color:#B0ADAA;
+    display: none;
+}
+
+#play_dungeon
+ul{
+    margin: 0;
+}
+
+#play_dungeon
+ul
+li{
+    display: flex;
+    display: inline;
+}
+
+#play_missions{
+    background-color:#B0ADAA;
+    display: none;
+}
+#play_store{
+    background-color:#B0ADAA;
+    display: none;
+}
+
+#bt_box{
+    display: flex;
+}
+
+#cave_bt_box{
+    display: flex;
+}
+
+#tot_log{
+    width: 100%;
+    height: 780px;
+    background-color: #E3C04D;
+     display: none;
+     position: absolute;
+     z-index: 2;
+}
+
+#cave_log{
+    width: 100%;
+    height: 780px;
+    background-color: #E3C04D;
+     display: none;
+     position: absolute;
+     z-index: 2;
+}
+
+/* ----------상태------------ */
+
+#state_it_box{
+    width: 100%;
+    height: 100%;
+}
+
+#state_box{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    background: #CACCCB;
+}
+
+#st_bbox{
+    display: flex;
+    justify-content: space-around;
+}
+
+#it_box{
+    width: 100%;
+    height: 650px;
+    background-color:#D6D3D3;
+}
+
+#it_title{
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    background: #EEE5A2;
+}
+
+#it_list{
+    width: 90%;
+    height: 630px;
+    margin: 0 auto;
+    background: #E3C04D;
+}
+
+
+/* ------상점------ */
+
+#transaction{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#hero_it_box{
+    width: 50%;
+    height: 100%;
+}
+
+#hero_name{
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#hero_it_list{
+    width: 100%;
+    height: 90%;
+    background: bisque;
+}
+
+#hero_gold{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background: thistle;
+}
+
+#merchant_it_box{
+    width: 50%;
+    height: 100%;
+}
+
+#merchant_name{
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#merchant_it_list{
+    width: 100%;
+    height: 90%;
+    background: rgb(171, 136, 94);
+}
+
+#merchant_gold{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background: rgb(164, 27, 164);
+}
+
+#big{
+    width: 500px;
+    height: 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#merchant{
+    width: 500px;
+    height: 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#pur_box
+li
+{
+    list-style: none;
+}
+
+/* ---던전--- */
+
+#cave_log{
+    width: 100%;
+    height: 700px;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+#log{
+    width: 100%;
+    height: 700px;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+/* 상인 */
+
+#pur_box{
+    display: flex;
+}
+
+/* 
+
+일반 지문 , 'black');
+
+강조 지문 , 'green');
+
+전투 지문 , 'red');
+
+강조 지문 , 'orange');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

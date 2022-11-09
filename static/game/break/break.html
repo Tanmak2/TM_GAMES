@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>벽돌깨기</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        background-color: #212121;
+      }
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+        margin-top: 100px;
+      }
+      div {
+        width: 800px;
+        height: 600px;
+        margin: 0 auto;
+        position: relative;
+      }
+      div button {
+        width: 200px;
+        height: 50px;
+        font-size: 30px;
+        position: absolute;
+        left: calc(50% - 100px);
+        top: 50%;
+        border: 0;
+        border-radius: 10px;
+        background-color: #b5c7ed;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <canvas id="canvas" width="800" height="600"></canvas>
+      <button id="start_bt" onclick="Start_bt()">Start</button>
+    </div>
+  </body>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var start_bt = document.getElementById('start_bt');
+    var x = canvas.width / 2;
+    var y = canvas.height - 60;
+    var dx = -3;
+    var dy = -3;
+    var ballRadius = 6;
+    var paddleHeight = 10;
+    var paddleWidth = 80;
+    var paddleX = (canvas.width - paddleWidth) / 2;
+    var rigthPressed = false;
+    var leftPressed = false;
+    var brickRowCount = 5;
+    var brickColCount = 9;
+    var brickWidth = 75;
+    var brickHeight = 30;
+    var brickPadding = 2;
+    var brickOffsetTop = 50;
+    var brickOffsetLeft = 55;
+    var totalBricks = brickColCount * brickRowCount;
+    var isGame = false;
+    var lives = 3;
+    var bricks = [];
+    for (var c = 0; c < brickColCount; c++) {
+      bricks[c] = [];
+      for (var r = 0; r < brickRowCount; r++) {
+        bricks[c][r] = {
+          x: 0,
+          y: 0,
+          status: randomStatus(),
+          color: randomColors(),
+        };
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler, false);
+    document.addEventListener('keyup', keyUpHandler, false);
+    document.addEventListener('mousemove', mouseMoveHandler, false);
+
+    function mouseMoveHandler(e) {
+      var relativeX = e.clientX - (window.innerWidth - canvas.width) / 2;
+      if (relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth / 2;
+      }
+    }
+
+    function keyDownHandler(e) {
+      if (e.keyCode == 39) {
+        rigthPressed = true;
+      } else if (e.keyCode == 37) {
+        leftPressed = true;
+      }
+    }
+
+    function keyUpHandler(e) {
+      if (e.keyCode == 39) {
+        rigthPressed = false;
+      } else if (e.keyCode == 37) {
+        leftPressed = false;
+      }
+    }
+
+    function Start_bt() {
+      start_bt.style.display = 'none';
+      isGame = true;
+      draw();
+    }
+
+    function drawBricks() {
+      for (var c = 0; c < brickColCount; c++) {
+        for (var r = 0; r < brickRowCount; r++) {
+          if (bricks[c][r].status >= 1) {
+            var bricksX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+            var bricksY = r * (brickHeight + brickPadding) + brickOffsetTop;
+            bricks[c][r].x = bricksX;
+            bricks[c][r].y = bricksY;
+            ctx.beginPath();
+            ctx.rect(bricksX, bricksY, brickWidth, brickHeight);
+            ctx.fillStyle = bricks[c][r].color;
+            if (bricks[c][r].status == 1) {
+              ctx.fillStyle = '#999';
+            }
+            ctx.fill();
+            ctx.closePath();
+          }
+        }
+      }
+    }
+    function randomStatus() {
+      var ran = Math.floor(Math.random() * 2) + 2;
+      return ran;
+    }
+    function randomColors() {
+      var color = [
+        '#ffafb0',
+        '#ffafd8',
+        '#eeb7b4',
+        '#f2cfa5',
+        '#fcffb0',
+        '#b5c7ed',
+        '#bee9b4',
+        '#caa6fe',
+        '#fcc6f7',
+      ];
+      var ran = Math.floor(Math.random() * 9);
+      return color[ran];
+    }
+
+    function collisionDetection() {
+      for (var c = 0; c < brickColCount; c++) {
+        for (var r = 0; r < brickRowCount; r++) {
+          var b = bricks[c][r];
+          if (b.status >= 1) {
+            if (
+              x > b.x - ballRadius &&
+              x < b.x + brickWidth + ballRadius &&
+              y > b.y - ballRadius &&
+              y < b.y + brickHeight + ballRadius
+            ) {
+              if (x < b.x || x > b.x + brickWidth) {
+                dx = -dx;
+              } else {
+                dy = -dy;
+              }
+              b.color = randomColors();
+              b.status--;
+              if (b.status == 0) {
+                totalBricks--;
+              }
+              if (totalBricks == 0) {
+                isGame = false;
+                alert('Win!');
+                document.location.reload();
+              }
+            }
+          }
+        }
+      }
+    }
+
+    function drawtotalBricks() {
+      ctx.font = '16px Arial';
+      ctx.fillStyle = '#0095DD';
+      ctx.fillText('남은 블록:' + totalBricks, 8, 20);
+    }
+
+    function drawLives() {
+      ctx.font = '16px Arial';
+      ctx.fillStyle = '#0095DD';
+      ctx.fillText('남은 목숨:' + lives, canvas.width - 90, 20);
+    }
+
+    function drawPaddle() {
+      ctx.beginPath();
+      ctx.rect(
+        paddleX,
+        canvas.height - paddleHeight - 30,
+        paddleWidth,
+        paddleHeight,
+      );
+      ctx.fillStyle = '#0095DD';
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawBall(x, y) {
+      ctx.beginPath();
+      ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+      ctx.fillStyle = '#0095DD';
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBricks();
+      drawBall(x, y);
+      drawPaddle();
+      drawtotalBricks();
+      drawLives();
+      collisionDetection();
+      if (y + dy < ballRadius) {
+        dy = -dy;
+      } else if (y + dy > canvas.height - ballRadius - 30) {
+        if (x > paddleX && x < paddleX + paddleWidth) {
+          if (dy > 0) {
+            dy = -(dy + 0.3);
+          } else {
+            dy = -(dy - 0.3);
+          }
+          if (x < paddleX + 20) {
+            if (dx > 0) {
+              dx = -dx;
+            }
+            dx = -4;
+          } else if (x < paddleX + 40) {
+            if (dx > 0) {
+              dx = -dx;
+            }
+            dx = -3;
+          } else if (x < paddleX + 60) {
+            if (dx < 0) {
+              dx = -dx;
+            }
+            dx = 3;
+          } else {
+            if (dx < 0) {
+              dx = -dx;
+            }
+            dx = 4;
+          }
+        } else {
+          lives--;
+          if (!lives) {
+            alert('Game Over!');
+            document.location.reload();
+            clearInterval(interval);
+          } else {
+            x = canvas.width / 2;
+            y = canvas.height - 60;
+            dx = 3;
+            dy = -3;
+            paddleX = (canvas.width - paddleWidth) / 2;
+          }
+        }
+      }
+      if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) {
+        dx = -dx;
+      }
+      if (rigthPressed && paddleX < canvas.width - paddleWidth) {
+        paddleX += 7;
+      } else if (leftPressed && paddleX > 0) {
+        paddleX -= 7;
+      }
+      x += dx;
+      y += dy;
+      if (isGame) {
+        requestAnimationFrame(draw);
+      }
+    }
+    draw();
+  </script>
+</html>

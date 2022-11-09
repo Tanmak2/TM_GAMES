@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TRPG3</title>
+    <link rel="stylesheet" href="./css/TRPG3.css" />
+  </head>
+  <body>
+    <div id="tot">
+      <div id="game">
+        <div id="title">
+          <h2>띠알피찌</h2>
+        </div>
+
+        <div id="menu_list_box">
+          <ul>
+            <li id="menu">메인</li>
+            <li id="state">상태</li>
+            <li id="dungeon">던전</li>
+            <li id="store">상점</li>
+          </ul>
+        </div>
+
+        <div id="play_list_box">
+          <div id="play_menu" class="tot_box">
+            <img src="main.png" alt="" />
+          </div>
+
+          <div id="play_state" class="tot_box">
+            <div id="state_it_box">
+              <div id="state_box">
+                <div id="hp_box">체력</div>
+                <div id="att_box">공격력</div>
+                <div id="lv_box">레벨</div>
+                <div id="xp_box">경험치</div>
+
+                <div id="gold_box">골드</div>
+              </div>
+
+              <div id="st_bbox">
+                <div id="hp_val">100</div>
+
+                <div id="att_val">20</div>
+
+                <div id="lv_val">1</div>
+
+                <div id="xp_val">0</div>
+
+                <div id="gold_val">0</div>
+              </div>
+
+              <div id="it_box">
+                <div id="it_title">아이템</div>
+                <div id="it_list">0</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="play_dungeon" class="tot_box">
+            <!-- 던전 -->
+            <ul>
+              <li id="dungeon_cave"></li>
+              <li id="laboratory">▷보이지 않은 공동</li>
+            </ul>
+
+            <!-- 던전 클릭시 출력 화면 -->
+
+            <div id="cave_log">
+              <ul>
+                <li id="f_back">뒤로가기</li>
+                <div id="cave_log_box">
+                  <div id="cave_bt_box">
+                    <button id="cave_start">시작</button>
+
+                    <div id="cave_home_go"></div>
+                  </div>
+                  <div id="cave_log"></div>
+                </div>
+              </ul>
+            </div>
+            <!-- ---------- -->
+            <div id="tot_log">
+              <ul>
+                <li id="go_backwards">뒤로가기</li>
+                <div id="log_box">
+                  <div id="bt_box">
+                    <button id="start">시작</button>
+                    <div id="home_go"></div>
+                  </div>
+                  <div id="log"></div>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div id="play_store" class="tot_box">
+            <div id="transaction">
+              <div id="hero_it_box">
+                <div id="hero_name">꽃게걸</div>
+                <div id="hero_it_list"></div>
+                <div id="hero_gold"></div>
+              </div>
+
+              <div id="merchant_it_box">
+                <div id="merchant_name">상인</div>
+                <div id="merchant_it_list">
+                  <div id="pur_box">
+                    <div id="first_thing">hp : 5 gold</div>
+                    <button type="button" id="purchase">구입</button>
+                  </div>
+                </div>
+                <div id="merchant_gold">감사합니다</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- 모듈시 type 변경 -->
+  <script type="module" src="./js/TRPG3.js"></script>
+  <script src="./js/third battle.js"></script>
+</html>
