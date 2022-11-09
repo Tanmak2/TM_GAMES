@@ -38,7 +38,7 @@
   line-height: 100px;
 }
 .logo-img img {
-  width: 82.3%;
+  width: 96.5%;
   height: 100px;
 }
 .join-bt-wrap {
@@ -138,6 +138,33 @@
   object-fit: fill;
   border-radius: 1rem;
 }
+.slide-div {
+  position: absolute;
+  left: -25%;
+}
+
+.button-div {
+  display: none;
+  position: absolute;
+  left: 0%;
+  width: 50px;
+  height: 50px;
+  background-color: #919191;
+  text-align: center;
+}
+
+.button-open {
+  width: 0px;
+  height: 0px;
+}
+
+.button-close {
+  width: 0px;
+  height: 0px;
+}
+.bi-person {
+  font-size: 30px;
+}
 
 @media all and (max-width: 1300px) {
   .content {
@@ -146,6 +173,29 @@
   }
   .box4x2 {
     grid-column: span 2;
+  }
+  .user-info-wrap {
+    width: 25%;
+    height: 90.7%;
+    z-index: 1;
+  }
+  .contents-wrap {
+    justify-content: center;
+  }
+  .logo {
+    width: 30%;
+  }
+  .logo-img {
+    width: 50%;
+  }
+  .logo-img img {
+    width: 96%;
+  }
+  .top-wrap {
+    justify-content: center;
+  }
+  .button-div {
+    display: block;
   }
 }
 @media all and (max-width: 700px) {
@@ -163,5 +213,18 @@
   .box4x2 {
     grid-column: span 1;
     grid-row: span 1;
+  }
+  .logo-img {
+    display: none;
+  }
+  .logo {
+    width: 80%;
+  }
+  .top-wrap {
+    justify-content: center;
+  }
+  .user-info-wrap {
+    width: 40%;
+    height: 90.7%;
   }
 }

@@ -4,7 +4,6 @@ var imgsrc = 'static/image/';
 var gamesrc = 'static/game/';
 
 if (document.cookie == '') {
-  console.log('로그인 안되어있음');
   userSessionCheck();
 } else {
   my_info();
@@ -74,3 +73,56 @@ function my_info() {
   document.getElementById('level').innerHTML = getCookie('level');
   document.getElementById('point').innerHTML = getCookie('point');
 }
+var istablet = false;
+var ismobile = false;
+$(window).resize(function () {
+  if ($(window).width() > 1300) {
+    $('.user-info-wrap').attr('class', 'user-info-wrap');
+    istablet = false;
+    ismobile = false;
+  }
+  if ($(window).width() <= 1300 && $(window).width() >= 1200) {
+    $('.user-info-wrap').attr('class', 'user-info-wrap slide-div');
+    $('.button-div').attr('class', 'button-div div-close');
+    $('.button-div').css('left', '0%');
+    $('.slide-div').css('left', '-25%');
+    istablet = true;
+    ismobile = false;
+  }
+  if ($(window).width() <= 700 && $(window).width() >= 500) {
+    $('.user-info-wrap').attr('class', 'user-info-wrap slide-div');
+    $('.button-div').attr('class', 'button-div div-close');
+    $('.slide-div').css('left', '-40%');
+    $('.button-div').css('left', '0%');
+    istablet = false;
+    ismobile = true;
+  }
+});
+$('.button-div').click(function () {
+  if (istablet) {
+    $(this).toggleClass('div-close');
+
+    if ($(this).hasClass('div-close')) {
+      $('.slide-div').animate({ left: '-25%' }, 800);
+      $('.button-div').animate({ left: '0%' }, 800);
+      $(this).find('.button-open').attr('class', 'button-close');
+    } else {
+      $('.slide-div').animate({ left: '0%' }, 800);
+      $('.button-div').animate({ left: '25%' }, 800);
+      $(this).find('.button-open').attr('class', 'button-open');
+    }
+  }
+  if (ismobile) {
+    $(this).toggleClass('div-close');
+
+    if ($(this).hasClass('div-close')) {
+      $('.slide-div').animate({ left: '-40%' }, 800);
+      $('.button-div').animate({ left: '0%' }, 800);
+      $(this).find('.button-open').attr('class', 'button-close');
+    } else {
+      $('.slide-div').animate({ left: '0%' }, 800);
+      $('.button-div').animate({ left: '40%' }, 800);
+      $(this).find('.button-open').attr('class', 'button-open');
+    }
+  }
+});
