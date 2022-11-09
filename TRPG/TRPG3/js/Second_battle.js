@@ -6,9 +6,9 @@ var cnt = 0; // 반복 횟수 조절
 var random = 2
 // Math.floor(Math.random()*6); // 특정 숫자가 나오면 아이템이 출력되게하기
 
-var golem_st = 0;
+var proce = true;
 
-var mis_val = document.getElementById("mis_val");
+var golem_st = 0;
 
 var hero_it_list = document.getElementById("hero_it_list");
 var merchant_it_list = document.getElementById("merchant_it_list");
@@ -33,10 +33,35 @@ var hero_golds = document.getElementById('hero_gold');
 
 document.getElementById('start').addEventListener('click', Start);
 
+// 구입
+
+var first_thing = document.getElementById('first_thing');
+var second_item = document.getElementById('second_item');
+
+document.getElementById('purchase').addEventListener('click', Process);
+
+function Process(){
+    alert(first_thing.innerText);
+
+    if(hero.gold >= 5){
+        hero.gold -= 5
+        hero_golds.innerText = hero.gold;
+        gold_val.innerText = hero.gold;
+    }
+    
+
+    if(hero.gold <= 0){
+        alert("구입 할 수 없습니다")
+        proce = false;
+    };
+    
+}
+
+
 // html에 출력
 
-var att = document.getElementById("att_box");
-var hp = document.getElementById("hp_box");
+var att = document.getElementById("att_val");
+var hp = document.getElementById("hp_val");
 
 // 초기화(새로고침)
 function re_tre_bt() {
@@ -136,26 +161,26 @@ function doSale(){ // 판다
     alert(hero.gold);
 }
 
-function Merchant_it(name,gold){
-    this.name = name;
-    this.gold = gold;
-}
+// function Merchant_it(name,gold){
+//     this.name = name;
+//     this.gold = gold;
+// }
 
-function Merchant_it_sponsor(){
+// function Merchant_it_sponsor(){
     
-    var merchants = [
-        ["HP_potion1",10],
-        ["HP_potion2",10],
-        ["HP_potion3",10],
-        ["HP_potion4",10],
-        ["HP_potion5",10]
-    ];
-    var mer = '';
-    for(var i = 0; i<merchants.length; i++){
-        mer = '<div id="merchant">'+merchants[i][0]+' <button id="left" tpye="button" onclick="doBuy()">구매</button></div>'
-        merchant_it_list.innerHTML += mer;
-    }
-}
+//     var merchants = [
+//         ["HP_potion1",10],
+//         ["HP_potion2",10],
+//         ["HP_potion3",10],
+//         ["HP_potion4",10],
+//         ["HP_potion5",10]
+//     ];
+//     var mer = '';
+//     for(var i = 0; i<merchants.length; i++){
+//         mer = '<div id="merchant">'+merchants[i][0]+' <button id="left" tpye="button" onclick="doBuy()">구매</button></div>'
+//         merchant_it_list.innerHTML += mer;
+//     }
+// }
 
 // js 모듈 시 사용 가능
 
@@ -327,14 +352,6 @@ function Battle(){
             logMessage(hero.name+" 이(가) "+monster.name+" 을(를) 쓰려트렸습니다")
             logMessage("남은 체력은" + hero.hp, 'green');
             cnt++;
-
-            if(monster.name == "Golem"){
-                golem_st++;
-                mis_val.innerHTML = golem_st;
-                if(golem_st == 10)
-                mis_val.innerHTML = "미션 성!공!";
-            }
-
             if(random == 2){ // 아이템을 얻고 저장
                 var nitem = Nitem_sponsor();
                 hero.it.push(nitem);
@@ -379,12 +396,12 @@ function Battle(){
         if(hero.hp <= 0){
             logMessage(hero.name+" 이(가) 패배 했습니다")
 
-            re_tre = document.createElement('button');
-            var re_tre_text = document.createTextNode('재도전');
-            re_tre.appendChild(re_tre_text);
-            bt_box.appendChild(re_tre);
-            re_tre.setAttribute( 'onclick','re_tre_bt()');
-            break;
+            // re_tre = document.createElement('button');
+            // var re_tre_text = document.createTextNode('재도전');
+            // re_tre.appendChild(re_tre_text);
+            // bt_box.appendChild(re_tre);
+            // re_tre.setAttribute( 'onclick','re_tre_bt()');
+            // break;
         }
 
         
@@ -453,12 +470,12 @@ function Middle_boss_battle() {
             logMessage(hero.name + wizard.name + " 의 시체는 재활용 되어 더욱 강력하게", 'red');
             logMessage("재탄생 될것입니다", 'red');
 
-            re_tre = document.createElement('button');
-            var re_tre_text = document.createTextNode('재도전');
-            re_tre.appendChild(re_tre_text);
-            bt_box.appendChild(re_tre);
-            re_tre.setAttribute( 'onclick','re_tre_bt()');
-            break;
+            // re_tre = document.createElement('button');
+            // var re_tre_text = document.createTextNode('재도전');
+            // re_tre.appendChild(re_tre_text);
+            // bt_box.appendChild(re_tre);
+            // re_tre.setAttribute( 'onclick','re_tre_bt()');
+            // break;
         }
     }
 }
@@ -504,24 +521,17 @@ function Boss_battle() {
 
                 att.innerHTML = hero.att;
                 hp.innerHTML = hero.hp;
-                // it_box.innerHTML = hero.it;
-
 
             for(var i = 0; i<hero.it.length; i++){ // 진짜 내 it 에 있는지 확인하기 위한 for문
                 it_box.innerHTML = hero.it[i].name;
 
-                // logMessage(hero.it[i].name);
-
-                re_tre = document.createElement('button');
-                var re_tre_text = document.createTextNode('재도전');
-                re_tre.appendChild(re_tre_text);
-                bt_box.appendChild(re_tre);
-                re_tre.setAttribute( 'onclick','re_tre_bt()');
-                break;
+                // re_tre = document.createElement('button');
+                // var re_tre_text = document.createTextNode('재도전');
+                // re_tre.appendChild(re_tre_text);
+                // bt_box.appendChild(re_tre);
+                // re_tre.setAttribute( 'onclick','re_tre_bt()');
+                // break;
             };
-
-            
-            
             break;
         }
 
@@ -535,12 +545,12 @@ function Boss_battle() {
             logMessage(hero.name+" 이(가) 패배 했습니다", 'red');
             logMessage(hero.name + " 은 "+ boss.name + "의 생명력을 채울 도구가 될 것입니다", 'red');
 
-            re_tre = document.createElement('button');
-            var re_tre_text = document.createTextNode('재도전');
-            re_tre.appendChild(re_tre_text);
-            bt_box.appendChild(re_tre);
-            re_tre.setAttribute( 'onclick','re_tre_bt()');
-            break;
+            // re_tre = document.createElement('button');
+            // var re_tre_text = document.createTextNode('재도전');
+            // re_tre.appendChild(re_tre_text);
+            // bt_box.appendChild(re_tre);
+            // re_tre.setAttribute( 'onclick','re_tre_bt()');
+            // break;
         }
     }
 

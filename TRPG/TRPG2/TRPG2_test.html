@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="TRPG2_test.css">
+    <link rel="stylesheet" href="./css/TRPG2_test.css">
 </head>
 <body>
     <div id="tot">
@@ -21,7 +21,6 @@
                     <li id="menu">메인</li>
                     <li id="state">상태</li>
                     <li id="dungeon">던전</li>
-                    <li id="missions">임무</li>
                     <li id="store">상점</li>
                 </ul>
             </div>
@@ -36,26 +35,35 @@
                     <div id="state_it_box">
                         <div id="state_box">
                             <div id="hp_box">
-                                체력<div id="hp_val">100</div>
+                                체력
                             </div>
                             <div id="att_box">
-                                공격력<div id="att_val">20</div>
+                                공격력
                             </div>
                             <div id="lv_box">
-                                레벨<div id="lv_val">1</div>
+                                레벨
                             </div>
                             <div id="xp_box">
-                                경험치<div id="xp_val">0</div>
-                            </div>
-
-                            <div id="mis">
-                                임무<div id="mis_val">0</div>
+                                경험치
                             </div>
 
                             <div id="gold_box">
-                                골드<div id="gold_val">0</div>
+                                골드
                             </div>
                         </div>
+
+                        <div id="st_bbox">
+                            <div id="hp_val">100</div>
+
+                            <div id="att_val">20</div>
+
+                            <div id="lv_val">1</div>
+
+                            <div id="xp_val">0</div>
+
+                            <div id="gold_val">0</div>
+                        </div>
+
                         <div id="it_box">
                             <div id="it_title">아이템</div>
                             <div id="it_list">0</div>
@@ -71,15 +79,28 @@
                     </ul>
 
                     <!-- 던전 클릭시 출력 화면 -->
+
+                    <div id="cave_log">
+                        <ul>
+                            <li id="f_back">뒤로가기</li>
+                            <div id="cave_log_box">
+                                <div id="cave_bt_box">
+                                    <button id="cave_start">시작</button>
+                                    
+                                    <div id="cave_home_go"></div>
+                                </div>
+                                <div id="cave_log"></div>
+                            </div>
+                        </ul>
+                    </div>
+                    <!-- ---------- -->
                     <div id="tot_log">
                         <ul>
                             <li id="go_backwards">뒤로가기</li>
                             <div id="log_box">
                                 <div id="bt_box">
                                     <button id="start">시작</button>
-                                    
                                     <div id="home_go"></div>
-                                    
                                 </div>
                                 <div id="log"></div>
                             </div>
@@ -87,27 +108,6 @@
                     </div>
 
                 </div>
-
-                <div id="play_missions" class="tot_box">
-                    
-                    <div id="missions_list_box">
-                       <div id="sign_box">
-                        <div id="sign_title">미션</div>
-                        <div id="sign_list">
-                            <div>구울 10마리 잡기</div>
-                        </div>
-                       </div>
-
-                       <div id="hero_sign_box">
-                        <div id="hero_sign_title">내 미션</div>
-                        <div id="hero_sign_list">
-                            <div>구울 10마리 잡기</div>
-                        </div>
-                       </div>
-                    </div>
-
-                </div>
-
                 <div id="play_store" class="tot_box">
                     <div id="transaction">
 
@@ -119,7 +119,15 @@
 
                         <div id="merchant_it_box">
                             <div id="merchant_name">상인</div>
-                            <div id="merchant_it_list"></div>
+                            <div id="merchant_it_list">
+
+                                    <div id="pur_box">
+                                    <div id="first_thing">hp : 5 gold</div>
+                                    <button type="button" id="purchase">구입</button>
+                                    </div>
+
+
+                            </div>
                             <div id="merchant_gold">감사합니다</div>
                         </div>
                     </div>
@@ -130,8 +138,7 @@
     </div>
 </body>
 <!-- 모듈시 type 변경 -->
-<script type="module" src="TRPG2.js"></script>
-<script src="first_battle.js"></script>
-<script src="Second_battle.js"></script>
+<script type="module" src="./js/TRPG2.js"></script>
+<script src="./js/Second_battle.js"></script>
 
 </html>

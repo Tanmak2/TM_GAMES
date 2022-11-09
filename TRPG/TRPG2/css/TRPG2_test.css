@@ -117,7 +117,20 @@ li{
     display: flex;
 }
 
+#cave_bt_box{
+    display: flex;
+}
+
 #tot_log{
+    width: 100%;
+    height: 780px;
+    background-color: #E3C04D;
+     display: none;
+     position: absolute;
+     z-index: 2;
+}
+
+#cave_log{
     width: 100%;
     height: 780px;
     background-color: #E3C04D;
@@ -135,10 +148,15 @@ li{
 
 #state_box{
     width: 100%;
-    height: 250px;
+    height: 30px;
     display: flex;
     justify-content: space-around;
     background: #CACCCB;
+}
+
+#st_bbox{
+    display: flex;
+    justify-content: space-around;
 }
 
 #it_box{
@@ -160,6 +178,7 @@ li{
     margin: 0 auto;
     background: #E3C04D;
 }
+
 
 /* ------상점------ */
 
@@ -235,50 +254,20 @@ li{
     justify-content: space-between;
 }
 
-/* ----임무---- */
-
-#missions_list_box{
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-
-#sign_box{
-    width: 50%;
-    height: 100%;
-}
-
-#sign_title{
-    width: 100%;
-    height: 30px;
-    text-align: center;
-}
-
-#sign_list{
-    width: 100%;
-    height: 870px;
-    background: goldenrod;
-}
-
-#hero_sign_box{
-    width: 50%;
-    height: 100%;
-}
-
-#hero_sign_title{
-    width: 100%;
-    height: 30px;
-    text-align: center;
-
-}
-
-#hero_sign_list{
-    width: 100%;
-    height: 870px;
-    background: rgb(128, 117, 87);
+#pur_box
+li
+{
+    list-style: none;
 }
 
 /* ---던전--- */
+
+#cave_log{
+    width: 100%;
+    height: 700px;
+    text-align: center;
+    overflow-y: scroll;
+}
 
 #log{
     width: 100%;
@@ -287,6 +276,11 @@ li{
     overflow-y: scroll;
 }
 
+/* 상인 */
+
+#pur_box{
+    display: flex;
+}
 
 /* 
 
