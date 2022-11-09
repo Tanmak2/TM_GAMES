@@ -65,7 +65,7 @@
 }
 .user-info-wrap {
   width: 15vw;
-  height: 95%;
+  height: 94%;
   background-color: #313131;
   color: white;
 }
@@ -81,7 +81,7 @@
 }
 .content {
   width: 85vw;
-  height: 95%;
+  height: 94%;
   display: grid;
   justify-content: center;
   align-content: center;
