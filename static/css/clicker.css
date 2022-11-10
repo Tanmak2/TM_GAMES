@@ -12,10 +12,13 @@ body {
   text-align: center;
   margin: 0 auto;
   color: white;
-  margin-top: 50px;
   font-size: 30px;
   border-bottom: 1px solid #999;
-  border-top: 1px solid #999;
+}
+.margins {
+  width: 100%;
+  height: 100px;
+  text-align: center;
 }
 .menu-wrap {
   width: 900px;

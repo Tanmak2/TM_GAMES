@@ -6,6 +6,7 @@
     <title>Pushing Capsule Hero</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
+    <link rel="stylesheet" href="../../css/mouse.css" />
     <style>
       body {
         background-color: #212121;
@@ -13,11 +14,24 @@
       #unity-fullscreen-button {
         display: none;
       }
+      .margins {
+        width: 100%;
+        height: 100px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width="1280" height="720"></canvas>
+      <div id="mouse"><img src="../../image/dy.png" /></div>
+      <div class="margins">
+        <a href="../../../index.html"
+          ><img src="../../image/logo.png" alt=""
+        /></a>
+      </div>
+      <div class="main">
+        <canvas id="unity-canvas" width="1280" height="720"></canvas>
+      </div>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -128,5 +142,6 @@
       };
       document.body.appendChild(script);
     </script>
+    <script src="../../js/mouse.js"></script>
   </body>
 </html>

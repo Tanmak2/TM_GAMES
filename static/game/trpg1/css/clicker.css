@@ -36,7 +36,6 @@
   height: 700px;
   margin: 0 auto;
   display: flex;
-  
 }
 .contents-box {
   width: 900px;
@@ -58,7 +57,7 @@
   position: absolute;
 }
 #upgrade_box {
-  background-image: url('띠알삐찌.png');
+  background-image: url('../띠알삐찌.png');
   background-size: cover;
   display: none;
 }
@@ -71,13 +70,13 @@
   display: none;
 }
 #percent_box {
-  background-image: url('동굴.png');
+  background-image: url('../동굴.png');
   background-size: cover;
   display: none;
 }
 /* ------------- */
 
-#st_box{
+#st_box {
   width: 1200px;
   height: 650px;
   margin: 0 auto;
@@ -86,7 +85,7 @@
   background: #854040;
 }
 
-.st_box_list{
+.st_box_list {
   width: 1200px;
   height: 60px;
   margin-top: 20%;
@@ -95,25 +94,10 @@
   /* background: rgb(57, 177, 161); */
 }
 
-#dt_st_att{
+#dt_st_att {
   /* background: hotpink; */
 }
 
-#dt_st_hp{
+#dt_st_hp {
   /* background: hotpink; */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

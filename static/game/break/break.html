@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>벽돌깨기</title>
+    <link rel="stylesheet" href="../../css/mouse.css" />
     <style>
       * {
         padding: 0;
@@ -17,7 +18,6 @@
         background: #eee;
         display: block;
         margin: 0 auto;
-        margin-top: 100px;
       }
       div {
         width: 800px;
@@ -36,12 +36,29 @@
         border-radius: 10px;
         background-color: #b5c7ed;
       }
+      .main {
+        width: 100%;
+        height: 100vh;
+      }
+      .margins {
+        width: 100%;
+        height: 100px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <div>
-      <canvas id="canvas" width="800" height="600"></canvas>
-      <button id="start_bt" onclick="Start_bt()">Start</button>
+    <div class="main">
+      <div id="mouse"><img src="../../image/dy.png" /></div>
+      <div class="margins">
+        <a href="../../../index.html"
+          ><img src="../../image/logo.png" alt=""
+        /></a>
+      </div>
+      <div>
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <button id="start_bt" onclick="Start_bt()">Start</button>
+      </div>
     </div>
   </body>
   <script>
@@ -288,4 +305,5 @@
     }
     draw();
   </script>
+  <script src="../../js/mouse.js"></script>
 </html>
