@@ -1,4 +1,4 @@
-<img src='https://user-images.githubusercontent.com/111038061/215132069-9ec46251-0ad2-4da6-89b5-d28c5377b4b2.png' width='95%'></img>
+<img src='https://user-images.githubusercontent.com/111038061/215332807-79be04f6-cf63-4fa5-98a0-bddf72e4ffeb.png' width='95%'></img>
 
 
   - 주제 : 스낵게임 프로젝트
@@ -7,7 +7,7 @@
 
   - 프로젝트 기간 : 2주
 
-  - 프로젝트 인원 : 2명(프론트,게임개발 1, 게임개발 1)
+  - 프로젝트 인원 : 1명
 
   - 사용 기술 : HTML, CSS, JavaScript, Unity, Firebase, Git, AWS
 
@@ -17,7 +17,7 @@
 
   - 느낀점 : 
 
-    - 처음으로 팀 프로젝트를 Git으로 관리하면서 Commit 충돌로 팀원과 소통이 중요하다는걸 느꼈습니다.
+    - 반응형 웹을 제작할때 Grid를 사용하면 부드럽게 전환되는걸 느꼈습니다.
 
     - Clean Code의 중요성을 느꼈습니다.
 
@@ -26,3 +26,5 @@
   - 보완점 : 
 
     - Firebase 보안규칙 만료로 로그인 및 회원가입 불가 이슈
+    
+    - Unity에서 WebGL로 빌드 시 프레임 드랍현상 이슈
